@@ -15,7 +15,10 @@
             'src/GameLayer.js',
             'src/Background.js',
             'src/ProFrame.js',
-            'src/EndButton.js'     //add your own files in order here
+            'src/EndButton.js',
+            'src/PC.js',
+            'src/TV.js',
+            'src/Audio.js'     //add your own files in order here
         ]
     };
 
