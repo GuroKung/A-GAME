@@ -103,26 +103,33 @@ var GameLayer = cc.LayerColor.extend({
     },
      onMouseDown:function ( e ){      
         var pos = e.getLocation();
-        console.log( 'x: '+ pos.x + ' y: ' + pos.y );
-        this.endButton.handleClick( pos );
+        console.log( 'x: '+ pos.x + ' y: ' + pos.y );        
         if( health > 0 ){
             if(this.PC.handleClick( pos )){
                 this.monitor.show();             
             }
             if (isShow) {
+                console.log('Being show');
                 this.monitor.handleClick( pos );
             }
-            this.TV.handleClick( pos );
-            this.audio.handleClick( pos );      
+            // if moniter is being show others object can't click
+            else { 
+                this.TV.handleClick( pos );
+                this.audio.handleClick( pos );
+                this.endButton.handleClick( pos );
+            }      
         }
         this.update();
      },
     onMouseMoved:function( e ){
         var pos = e.getLocation();     
-        this.endButton.handleMouseMove( pos );
-        this.PC.handleMouseMove( pos );
-        this.TV.handleMouseMove( pos );
-        this.audio.handleMouseMove( pos );        
+        // if moniter is being show others object can't glow
+        if(!isShow){ 
+            this.endButton.handleMouseMove( pos );
+            this.PC.handleMouseMove( pos );
+            this.TV.handleMouseMove( pos );
+            this.audio.handleMouseMove( pos );
+        }        
     }
 });
 

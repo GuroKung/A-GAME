@@ -11,7 +11,6 @@ var EndButton = cc.Sprite.extend( {
     	if( cc.rectContainsPoint( boxEnd, touchLocation ) ){
         	console.log( 'Click: End button' );
         	day++;
-            console.log( 'day: '+ day );
             health = 100;
         }
     },
