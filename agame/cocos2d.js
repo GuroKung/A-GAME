@@ -18,7 +18,8 @@
             'src/EndButton.js',
             'src/PC.js',
             'src/TV.js',
-            'src/Audio.js'     //add your own files in order here
+            'src/Audio.js',
+            'src/Monitor.js'     //add your own files in order here
         ]
     };
 

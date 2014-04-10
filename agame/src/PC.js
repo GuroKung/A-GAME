@@ -9,10 +9,9 @@ var PC = cc.Sprite.extend( {
         var boxPC = this.getBoundingBox();
     	if( cc.rectContainsPoint( boxPC, touchLocation ) ){
         	console.log( 'Click: PC' );
-            health -= 10;
-            money += 10;
-            code += 5;
+            return true;
         }
+        else return false;
     },
     handleMouseMove:function( touchLocation ){
         var boxPC = this.getBoundingBox();

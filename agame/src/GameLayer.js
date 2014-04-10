@@ -1,9 +1,9 @@
 var day = 1;
 var health = 100;
 var money = 500;
-var code = 0;
+var code = 10;
 var art = 30;
-var sound = 0;
+var sound = 20;
 var writing = 45;
 var GameLayer = cc.LayerColor.extend({
     init: function() {
@@ -12,7 +12,7 @@ var GameLayer = cc.LayerColor.extend({
 
         this.room = new Background();
         this.addChild( this.room );//background
-        
+
         this.createObjects(); // add objects
         this.createLabel(); //add status label
         this.createParameter();//add parameter
@@ -37,6 +37,9 @@ var GameLayer = cc.LayerColor.extend({
 
         this.audio = new Audio();
         this.addChild( this.audio );
+
+        this.monitor = new Monitor();
+        this.addChild( this.monitor ,1 );
     },
     createParameter: function(){
         var draw = cc.DrawNode.create();
@@ -103,7 +106,12 @@ var GameLayer = cc.LayerColor.extend({
         console.log( 'x: '+ pos.x + ' y: ' + pos.y );
         this.endButton.handleClick( pos );
         if( health > 0 ){
-            this.PC.handleClick( pos );
+            if(this.PC.handleClick( pos )){
+                this.monitor.show();             
+            }
+            if (isShow) {
+                this.monitor.handleClick( pos );
+            }
             this.TV.handleClick( pos );
             this.audio.handleClick( pos );      
         }
