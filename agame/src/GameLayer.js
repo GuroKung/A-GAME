@@ -2,9 +2,9 @@ var day = 1;
 var health = 100;
 var money = 500;
 var code = 0;
-var art = 30;
+var art = 0;
 var sound = 0;
-var writing = 45;
+var writing = 0;
 var GameLayer = cc.LayerColor.extend({
     init: function() {
         this._super( new cc.Color4B( 127, 127, 127, 255 ) );
