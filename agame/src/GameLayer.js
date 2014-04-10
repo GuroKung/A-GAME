@@ -18,13 +18,13 @@ var GameLayer = cc.LayerColor.extend({
         this.createParameter();//add parameter
 
         this.setMouseEnabled(true); // use mouse
-        this.updateLabel();
+        this.updateMoney();
 
         return true;
     },
     createObjects: function(){
         this.proframe = new ProFrame();
-        this.addChild( this.proframe );//add frame
+        this.addChild( this.proframe );
 
         this.endButton = new EndButton();
         this.addChild( this.endButton );
@@ -75,9 +75,10 @@ var GameLayer = cc.LayerColor.extend({
         this.addChild( this.moneyNum );
     },
 
-    updateLabel: function() {      
+    updateMoney: function() {      
         var pos = new cc.Point( 330, 585 );
-        var temp =  money;
+        // when money is increase change the position
+        var temp =  money;   
         for( var i = 0; i<temp ; i++ ){
             temp /= 10;
              this.moneyNum.setPosition( new cc.Point( pos.x+55, pos.y ) );
@@ -99,26 +100,26 @@ var GameLayer = cc.LayerColor.extend({
             this.healthNum.setPosition( new cc.Point( 430, 630 ) );  
         }
         this.moneyNum.setString( money + ' ฿' );
-        this.updateLabel();
+        this.updateMoney();
     },
      onMouseDown:function ( e ){      
         var pos = e.getLocation();
-        console.log( 'x: '+ pos.x + ' y: ' + pos.y );        
-        if( health > 0 ){
-            if(this.PC.handleClick( pos )){
-                this.monitor.show();             
-            }
-            if (isShow) {
-                console.log('Being show');
-                this.monitor.handleClick( pos );
-            }
-            // if moniter is being show others object can't click
-            else { 
+        console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
+        if(this.PC.handleClick( pos )){
+            this.monitor.show();             
+        }
+        if (isShow) {
+            console.log('Being show');
+            this.monitor.handleClick( pos );
+        }                   
+        // if moniter is being show others object can't click, but end button
+        if(!isShow){  
+            if( health > 0 ){     
                 this.TV.handleClick( pos );
                 this.audio.handleClick( pos );
-                this.endButton.handleClick( pos );
-            }      
-        }
+            } 
+            this.endButton.handleClick( pos );       
+         }
         this.update();
      },
     onMouseMoved:function( e ){
