@@ -11,7 +11,7 @@ var Audio = cc.Sprite.extend( {
     	if(cc.rectContainsPoint( boxAudio, touchLocation ) ){
         	console.log( 'Click: Audio' );
             sound += 5;
-            health -= 10;
+            health -= 30;
         }
     },
     handleMouseMove: function( touchLocation ){
