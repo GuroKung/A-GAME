@@ -53,6 +53,24 @@ var GameLayer = cc.LayerColor.extend({
         this.StatIcon1.setPosition( new cc.Point( 895, 618 ) );
         this.addChild( this.StatIcon1 , 1 );
         this.StatIcon1.setVisible(false);
+
+        this.StatIcon2 = cc.LabelTTF.create( 'Sound: '+soundPlus +'++  Health: 20--', 'Viner Hand ITC', 25 );
+        this.StatIcon2.setColor( new cc.Color3B( 50, 50, 50 ) );
+        this.StatIcon2.setPosition( new cc.Point( 895, 520 ) );
+        this.addChild( this.StatIcon2 , 1 );
+        this.StatIcon2.setVisible(false);
+
+        this.StatIcon3 = cc.LabelTTF.create( 'Writing: '+writingPlus +'++  Health: 20--', 'Viner Hand ITC', 25 );
+        this.StatIcon3.setColor( new cc.Color3B( 50, 50, 50 ) );
+        this.StatIcon3.setPosition( new cc.Point( 895, 408 ) );
+        this.addChild( this.StatIcon3 , 1 );
+        this.StatIcon3.setVisible(false);
+
+        this.StatIcon4 = cc.LabelTTF.create( 'Code: '+codePlus +'++  Health: 20--', 'Viner Hand ITC', 25 );
+        this.StatIcon4.setColor( new cc.Color3B( 50, 50, 50 ) );
+        this.StatIcon4.setPosition( new cc.Point( 895, 300 ) );
+        this.addChild( this.StatIcon4 , 1 );
+        this.StatIcon4.setVisible(false);
     },
     createIcons: function(){
         this.icon1 = new Icon1();
@@ -156,7 +174,10 @@ var GameLayer = cc.LayerColor.extend({
      },
     onMouseMoved:function( e ){
         var pos = e.getLocation();
-        this.StatIcon1.setVisible(false);     
+        this.StatIcon1.setVisible(false);
+        this.StatIcon2.setVisible(false);
+        this.StatIcon3.setVisible(false); 
+        this.StatIcon4.setVisible(false);      
         if(isShow){
             this.icon1.handleMouseMove( pos );
             this.icon2.handleMouseMove( pos );
@@ -164,6 +185,15 @@ var GameLayer = cc.LayerColor.extend({
             this.icon4.handleMouseMove( pos );
             if(focusIcon1){
                 this.StatIcon1.setVisible(true);
+            }
+            if(focusIcon2){
+                this.StatIcon2.setVisible(true);
+            }
+            if(focusIcon3){
+                this.StatIcon3.setVisible(true);
+            }
+            if(focusIcon4){
+                this.StatIcon4.setVisible(true);
             }
         }
         if(!isShow){
