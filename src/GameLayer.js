@@ -5,6 +5,10 @@ var code = 10;
 var art = 30;
 var sound = 20;
 var writing = 45;
+var codePlus = 5;
+var artPlus = 5;
+var soundPlus = 5;
+var writingPlus = 5;
 var GameLayer = cc.LayerColor.extend({
     init: function() {
         this._super( new cc.Color4B( 127, 127, 127, 255 ) );
@@ -17,6 +21,7 @@ var GameLayer = cc.LayerColor.extend({
         this.createLabel(); //add status label
         this.createParameter();//add parameter
         this.createIcons();
+        this.createStatIcon();
 
         this.setMouseEnabled(true); // use mouse
         this.updateMoney();
@@ -41,6 +46,13 @@ var GameLayer = cc.LayerColor.extend({
 
         this.monitor = new Monitor();
         this.addChild( this.monitor ,1 );
+    },
+    createStatIcon: function(){
+        this.StatIcon1 = cc.LabelTTF.create( 'Art: '+artPlus +'++  Health: 20--', 'Viner Hand ITC', 25 );
+        this.StatIcon1.setColor( new cc.Color3B( 50, 50, 50 ) );
+        this.StatIcon1.setPosition( new cc.Point( 895, 618 ) );
+        this.addChild( this.StatIcon1 , 1 );
+        this.StatIcon1.setVisible(false);
     },
     createIcons: function(){
         this.icon1 = new Icon1();
@@ -143,12 +155,16 @@ var GameLayer = cc.LayerColor.extend({
         this.update();
      },
     onMouseMoved:function( e ){
-        var pos = e.getLocation();     
+        var pos = e.getLocation();
+        this.StatIcon1.setVisible(false);     
         if(isShow){
             this.icon1.handleMouseMove( pos );
             this.icon2.handleMouseMove( pos );
             this.icon3.handleMouseMove( pos );
             this.icon4.handleMouseMove( pos );
+            if(focusIcon1){
+                this.StatIcon1.setVisible(true);
+            }
         }
         if(!isShow){
             this.endButton.handleMouseMove( pos );

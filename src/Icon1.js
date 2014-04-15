@@ -1,3 +1,4 @@
+var focusIcon1 = false;
 var Icon1 = cc.Sprite.extend( {
     ctor: function() {
         this._super();
@@ -11,10 +12,14 @@ var Icon1 = cc.Sprite.extend( {
     handleMouseMove: function( touchLocation ){
         if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&
             touchLocation.y>579&&touchLocation.y<672){
-            console.log( 'Focus: Icon1' );
+            console.log( 'Focus: Icon1' ); 
+            focusIcon1 = true;        
             this.setTexture( cc.TextureCache.getInstance().addImage( 'images/icon1_2.png' ) );
         }
-        else this.setTexture( cc.TextureCache.getInstance().addImage( 'images/icon1.png' ) );
+        else {
+            focusIcon1 = false;
+            this.setTexture( cc.TextureCache.getInstance().addImage( 'images/icon1.png' ) );
+        }
     },
     show: function(){
         this.setVisible(true);
