@@ -16,6 +16,7 @@ var GameLayer = cc.LayerColor.extend({
         this.createObjects(); // add objects
         this.createLabel(); //add status label
         this.createParameter();//add parameter
+        this.createIcons();
 
         this.setMouseEnabled(true); // use mouse
         this.updateMoney();
@@ -40,6 +41,19 @@ var GameLayer = cc.LayerColor.extend({
 
         this.monitor = new Monitor();
         this.addChild( this.monitor ,1 );
+    },
+    createIcons: function(){
+        this.icon1 = new Icon1();
+        this.addChild( this.icon1 , 1);
+
+        this.icon2 = new Icon2();
+        this.addChild( this.icon2 , 1);
+
+        this.icon3 = new Icon3();
+        this.addChild( this.icon3 , 1);
+
+        this.icon4 = new Icon4();
+        this.addChild( this.icon4 , 1);
     },
     createParameter: function(){
         var draw = cc.DrawNode.create();
@@ -74,7 +88,6 @@ var GameLayer = cc.LayerColor.extend({
         this.moneyNum.setPosition( new cc.Point( 315, 585 ) );
         this.addChild( this.moneyNum );
     },
-
     updateMoney: function() {      
         var pos = new cc.Point( 330, 585 );
         // when money is increase change the position
@@ -106,14 +119,21 @@ var GameLayer = cc.LayerColor.extend({
         var pos = e.getLocation();
         console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
         if(this.PC.handleClick( pos )){
-            this.monitor.show();             
+            this.monitor.show();           
         }
         if (isShow) {
             console.log('Being show');
+            this.icon1.show();
+            this.icon2.show();
+            this.icon3.show();
+            this.icon4.show(); 
             this.monitor.handleClick( pos );
         }                   
-        // if moniter is being show others object can't click, but end button
-        if(!isShow){  
+        if(!isShow){
+            this.icon1.hide();
+            this.icon2.hide();
+            this.icon3.hide();
+            this.icon4.hide(); 
             if( health > 0 ){     
                 this.TV.handleClick( pos );
                 this.audio.handleClick( pos );
@@ -124,8 +144,13 @@ var GameLayer = cc.LayerColor.extend({
      },
     onMouseMoved:function( e ){
         var pos = e.getLocation();     
-        // if moniter is being show others object can't glow
-        if(!isShow){ 
+        if(isShow){
+            this.icon1.handleMouseMove( pos );
+            this.icon2.handleMouseMove( pos );
+            this.icon3.handleMouseMove( pos );
+            this.icon4.handleMouseMove( pos );
+        }
+        if(!isShow){
             this.endButton.handleMouseMove( pos );
             this.PC.handleMouseMove( pos );
             this.TV.handleMouseMove( pos );

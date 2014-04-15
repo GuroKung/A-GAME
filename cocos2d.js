@@ -19,7 +19,11 @@
             'src/PC.js',
             'src/TV.js',
             'src/Audio.js',
-            'src/Monitor.js'     //add your own files in order here
+            'src/Monitor.js',
+            'src/Icon1.js',
+            'src/Icon2.js',
+            'src/Icon3.js',
+            'src/Icon4.js'     //add your own files in order here
         ]
     };
 
