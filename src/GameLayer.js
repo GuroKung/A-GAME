@@ -46,6 +46,10 @@ var GameLayer = cc.LayerColor.extend({
 
         this.monitor = new Monitor();
         this.addChild( this.monitor ,1 );
+
+        this.updateScreen = new Screen();
+        this.addChild( this.updateScreen ,2 );
+
     },
     createStatIcon: function(){
         this.StatIcon1 = cc.LabelTTF.create( 'Art: '+artPlus +'++  Health: 40--', 'Viner Hand ITC', 25 );
