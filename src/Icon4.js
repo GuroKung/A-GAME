@@ -7,7 +7,12 @@ var Icon4 = cc.Sprite.extend( {
         this.setVisible(false);  
     },
     handleClick:function( touchLocation ){
-
+        if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&
+            touchLocation.y>266&&touchLocation.y<348){
+            console.log( 'Click: Icon4' );
+            health -= 40;
+            code += codePlus;
+        }
     },
     handleMouseMove: function( touchLocation ){
         if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&

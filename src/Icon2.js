@@ -7,7 +7,12 @@ var Icon2 = cc.Sprite.extend( {
         this.setVisible(false);   
     },
     handleClick:function( touchLocation ){
-
+        if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&
+            touchLocation.y>476&&touchLocation.y<567){
+            console.log( 'Click: Icon2' );
+            health -= 40;
+            sound += soundPlus;
+        }
     },
     handleMouseMove: function( touchLocation ){
         if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&

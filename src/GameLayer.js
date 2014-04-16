@@ -1,10 +1,10 @@
 var day = 1;
 var health = 100;
 var money = 500;
-var code = 10;
-var art = 30;
-var sound = 20;
-var writing = 45;
+var code = 0;
+var art = 0;
+var sound = 0;
+var writing = 0;
 var codePlus = 5;
 var artPlus = 5;
 var soundPlus = 5;
@@ -48,25 +48,25 @@ var GameLayer = cc.LayerColor.extend({
         this.addChild( this.monitor ,1 );
     },
     createStatIcon: function(){
-        this.StatIcon1 = cc.LabelTTF.create( 'Art: '+artPlus +'++  Health: 20--', 'Viner Hand ITC', 25 );
+        this.StatIcon1 = cc.LabelTTF.create( 'Art: '+artPlus +'++  Health: 40--', 'Viner Hand ITC', 25 );
         this.StatIcon1.setColor( new cc.Color3B( 50, 50, 50 ) );
         this.StatIcon1.setPosition( new cc.Point( 895, 618 ) );
         this.addChild( this.StatIcon1 , 1 );
         this.StatIcon1.setVisible(false);
 
-        this.StatIcon2 = cc.LabelTTF.create( 'Sound: '+soundPlus +'++  Health: 20--', 'Viner Hand ITC', 25 );
+        this.StatIcon2 = cc.LabelTTF.create( 'Sound: '+soundPlus +'++  Health: 40--', 'Viner Hand ITC', 25 );
         this.StatIcon2.setColor( new cc.Color3B( 50, 50, 50 ) );
         this.StatIcon2.setPosition( new cc.Point( 895, 520 ) );
         this.addChild( this.StatIcon2 , 1 );
         this.StatIcon2.setVisible(false);
 
-        this.StatIcon3 = cc.LabelTTF.create( 'Writing: '+writingPlus +'++  Health: 20--', 'Viner Hand ITC', 25 );
+        this.StatIcon3 = cc.LabelTTF.create( 'Writing: '+writingPlus +'++  Health: 40--', 'Viner Hand ITC', 25 );
         this.StatIcon3.setColor( new cc.Color3B( 50, 50, 50 ) );
         this.StatIcon3.setPosition( new cc.Point( 895, 408 ) );
         this.addChild( this.StatIcon3 , 1 );
         this.StatIcon3.setVisible(false);
 
-        this.StatIcon4 = cc.LabelTTF.create( 'Code: '+codePlus +'++  Health: 20--', 'Viner Hand ITC', 25 );
+        this.StatIcon4 = cc.LabelTTF.create( 'Code: '+codePlus +'++  Health: 40--', 'Viner Hand ITC', 25 );
         this.StatIcon4.setColor( new cc.Color3B( 50, 50, 50 ) );
         this.StatIcon4.setPosition( new cc.Point( 895, 300 ) );
         this.addChild( this.StatIcon4 , 1 );
@@ -84,6 +84,9 @@ var GameLayer = cc.LayerColor.extend({
 
         this.icon4 = new Icon4();
         this.addChild( this.icon4 , 1);
+
+        this.fox = new Fox();
+        this.addChild( this.fox , 1);
     },
     createParameter: function(){
         var draw = cc.DrawNode.create();
@@ -156,14 +159,22 @@ var GameLayer = cc.LayerColor.extend({
             this.icon1.show();
             this.icon2.show();
             this.icon3.show();
-            this.icon4.show(); 
+            this.icon4.show();
+            this.fox.show();
+            if( health > 20 ){  
+                this.icon1.handleClick( pos );
+                this.icon2.handleClick( pos );
+                this.icon3.handleClick( pos );
+                this.icon4.handleClick( pos );
+            } 
             this.monitor.handleClick( pos );
         }                   
         if(!isShow){
             this.icon1.hide();
             this.icon2.hide();
             this.icon3.hide();
-            this.icon4.hide(); 
+            this.icon4.hide();
+            this.fox.hide(); 
             if( health > 0 ){     
                 this.TV.handleClick( pos );
                 this.audio.handleClick( pos );
@@ -183,6 +194,7 @@ var GameLayer = cc.LayerColor.extend({
             this.icon2.handleMouseMove( pos );
             this.icon3.handleMouseMove( pos );
             this.icon4.handleMouseMove( pos );
+            this.fox.handleMouseMove( pos );
             if(focusIcon1){
                 this.StatIcon1.setVisible(true);
             }
