@@ -7,8 +7,8 @@ var Screen = cc.Sprite.extend( {
         this.setVisible(false); 
     },
     handleClick: function( touchLocation ){
-    	if( (touchLocation.x>1238.5&&touchLocation.x<1283.5)&&
-            (touchLocation.y>688&&touchLocation.y<697) ){
+    	if( (touchLocation.x>1238.5&&touchLocation.x<1284.5)&&
+            (touchLocation.y>685&&touchLocation.y<697) ){
         	console.log( 'Hide: Screen' );
             this.setVisible(false);
             showScreen = false;

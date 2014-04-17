@@ -1,14 +1,10 @@
 var day = 1;
 var health = 100;
 var money = 500;
-var code = 0;
-var art = 0;
-var sound = 0;
-var writing = 0;
-var codePlus = 5;
-var artPlus = 5;
-var soundPlus = 5;
-var writingPlus = 5;
+var code = [0,5,500];
+var art = [0,5,500];
+var sound = [0,5,500];
+var writing = [0,5,500];
 var GameLayer = cc.LayerColor.extend({
     init: function() {
         this._super( new cc.Color4B( 127, 127, 127, 255 ) );
@@ -52,25 +48,25 @@ var GameLayer = cc.LayerColor.extend({
 
     },
     createStatIcon: function(){
-        this.StatIcon1 = cc.LabelTTF.create( 'Art: '+artPlus +'++  Health: 40--', 'Viner Hand ITC', 25 );
+        this.StatIcon1 = cc.LabelTTF.create( 'Art: '+art[1] +'++  Health: 40--', 'Viner Hand ITC', 25 );
         this.StatIcon1.setColor( new cc.Color3B( 50, 50, 50 ) );
         this.StatIcon1.setPosition( new cc.Point( 895, 618 ) );
         this.addChild( this.StatIcon1 , 1 );
         this.StatIcon1.setVisible(false);
 
-        this.StatIcon2 = cc.LabelTTF.create( 'Sound: '+soundPlus +'++  Health: 40--', 'Viner Hand ITC', 25 );
+        this.StatIcon2 = cc.LabelTTF.create( 'Sound: '+sound[1] +'++  Health: 40--', 'Viner Hand ITC', 25 );
         this.StatIcon2.setColor( new cc.Color3B( 50, 50, 50 ) );
         this.StatIcon2.setPosition( new cc.Point( 895, 520 ) );
         this.addChild( this.StatIcon2 , 1 );
         this.StatIcon2.setVisible(false);
 
-        this.StatIcon3 = cc.LabelTTF.create( 'Writing: '+writingPlus +'++  Health: 40--', 'Viner Hand ITC', 25 );
+        this.StatIcon3 = cc.LabelTTF.create( 'Writing: '+writing[1] +'++  Health: 40--', 'Viner Hand ITC', 25 );
         this.StatIcon3.setColor( new cc.Color3B( 50, 50, 50 ) );
         this.StatIcon3.setPosition( new cc.Point( 895, 408 ) );
         this.addChild( this.StatIcon3 , 1 );
         this.StatIcon3.setVisible(false);
 
-        this.StatIcon4 = cc.LabelTTF.create( 'Code: '+codePlus +'++  Health: 40--', 'Viner Hand ITC', 25 );
+        this.StatIcon4 = cc.LabelTTF.create( 'Code: '+code[1] +'++  Health: 40--', 'Viner Hand ITC', 25 );
         this.StatIcon4.setColor( new cc.Color3B( 50, 50, 50 ) );
         this.StatIcon4.setPosition( new cc.Point( 895, 300 ) );
         this.addChild( this.StatIcon4 , 1 );
@@ -95,10 +91,10 @@ var GameLayer = cc.LayerColor.extend({
     createParameter: function(){
         var draw = cc.DrawNode.create();
         this.addChild(draw);        
-        draw.drawSegment( new cc.Point(1000,657), new cc.Point(1003+(3*code),657),10, new cc.Color4F(0.133,0.69,0.298,1)); // code
-        draw.drawSegment( new cc.Point(1000,621), new cc.Point(1003+(3*art),621),10, new cc.Color4F(0.894,0.035,0.314,1)); // art
-        draw.drawSegment( new cc.Point(1000,584), new cc.Point(1003+(3*sound),584),10, new cc.Color4F(0,0.635,0.909,1)); // sound 
-        draw.drawSegment( new cc.Point(1000,545), new cc.Point(1003+(3*writing),545),10, new cc.Color4F(0.423,0.184,0.517,1)); // writing
+        draw.drawSegment( new cc.Point(1000,657), new cc.Point(1003+(3*code[0]),657),10, new cc.Color4F(0.133,0.69,0.298,1)); // code
+        draw.drawSegment( new cc.Point(1000,621), new cc.Point(1003+(3*art[0]),621),10, new cc.Color4F(0.894,0.035,0.314,1)); // art
+        draw.drawSegment( new cc.Point(1000,584), new cc.Point(1003+(3*sound[0]),584),10, new cc.Color4F(0,0.635,0.909,1)); // sound 
+        draw.drawSegment( new cc.Point(1000,545), new cc.Point(1003+(3*writing[0]),545),10, new cc.Color4F(0.423,0.184,0.517,1)); // writing
     },
     createLabel: function(){
         this.dayLabel = cc.LabelTTF.create( 'DAY: ', 'Stencil', 60 );

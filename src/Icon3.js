@@ -11,7 +11,7 @@ var Icon3 = cc.Sprite.extend( {
             touchLocation.y>368&&touchLocation.y<463){
             console.log( 'Click: Icon3' );
             health -= 40;
-            writing += writingPlus;
+            writing[0] += writing[1];
         }
     },
     handleMouseMove: function( touchLocation ){
