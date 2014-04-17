@@ -155,25 +155,33 @@ var GameLayer = cc.LayerColor.extend({
      onMouseDown:function ( e ){      
         var pos = e.getLocation();
         console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
-        if(this.PC.handleClick( pos )){
+        if( this.PC.handleClick( pos ) ){
             this.monitor.show();           
         }
-        if (isShow) {
+        if ( isShow ) {
             console.log('Being show');
             this.icon1.show();
             this.icon2.show();
             this.icon3.show();
             this.icon4.show();
-            this.fox.show();
-            if( health > 20 ){  
-                this.icon1.handleClick( pos );
-                this.icon2.handleClick( pos );
-                this.icon3.handleClick( pos );
-                this.icon4.handleClick( pos );
-            } 
-            this.monitor.handleClick( pos );
+            this.fox.show();           
+            if( showScreen ){
+                this.updateScreen.handleClick( pos );
+            }
+            if( !showScreen ){
+                if ( this.fox.handleClick( pos ) ){
+                    this.updateScreen.show();
+                 }
+                if( health > 20 ){  
+                    this.icon1.handleClick( pos );
+                    this.icon2.handleClick( pos );
+                    this.icon3.handleClick( pos );
+                    this.icon4.handleClick( pos );
+                } 
+                this.monitor.handleClick( pos );
+            }
         }                   
-        if(!isShow){
+        if( !isShow ){
             this.icon1.hide();
             this.icon2.hide();
             this.icon3.hide();
@@ -194,22 +202,24 @@ var GameLayer = cc.LayerColor.extend({
         this.StatIcon3.setVisible(false); 
         this.StatIcon4.setVisible(false);      
         if(isShow){
-            this.icon1.handleMouseMove( pos );
-            this.icon2.handleMouseMove( pos );
-            this.icon3.handleMouseMove( pos );
-            this.icon4.handleMouseMove( pos );
-            this.fox.handleMouseMove( pos );
-            if(focusIcon1){
-                this.StatIcon1.setVisible(true);
-            }
-            if(focusIcon2){
-                this.StatIcon2.setVisible(true);
-            }
-            if(focusIcon3){
-                this.StatIcon3.setVisible(true);
-            }
-            if(focusIcon4){
-                this.StatIcon4.setVisible(true);
+            if( !showScreen ){
+                this.icon1.handleMouseMove( pos );
+                this.icon2.handleMouseMove( pos );
+                this.icon3.handleMouseMove( pos );
+                this.icon4.handleMouseMove( pos );
+                this.fox.handleMouseMove( pos );
+                if(focusIcon1){
+                    this.StatIcon1.setVisible(true);
+                }
+                if(focusIcon2){
+                    this.StatIcon2.setVisible(true);
+                }
+                if(focusIcon3){
+                    this.StatIcon3.setVisible(true);
+                }
+                if(focusIcon4){
+                    this.StatIcon4.setVisible(true);
+                }
             }
         }
         if(!isShow){

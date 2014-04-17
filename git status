@@ -1,0 +1,92 @@
+[1mdiff --git a/src/GameLayer.js b/src/GameLayer.js[m
+[1mindex 2018fd1..fa94159 100644[m
+[1m--- a/src/GameLayer.js[m
+[1m+++ b/src/GameLayer.js[m
+[36m@@ -155,25 +155,33 @@[m [mvar GameLayer = cc.LayerColor.extend({[m
+      onMouseDown:function ( e ){      [m
+         var pos = e.getLocation();[m
+         console.log( 'x: '+ pos.x + ' y: ' + pos.y ); [m
+[31m-        if(this.PC.handleClick( pos )){[m
+[32m+[m[32m        if( this.PC.handleClick( pos ) ){[m
+             this.monitor.show();           [m
+         }[m
+[31m-        if (isShow) {[m
+[32m+[m[32m        if ( isShow ) {[m
+             console.log('Being show');[m
+             this.icon1.show();[m
+             this.icon2.show();[m
+             this.icon3.show();[m
+             this.icon4.show();[m
+[31m-            this.fox.show();[m
+[31m-            if( health > 20 ){  [m
+[31m-                this.icon1.handleClick( pos );[m
+[31m-                this.icon2.handleClick( pos );[m
+[31m-                this.icon3.handleClick( pos );[m
+[31m-                this.icon4.handleClick( pos );[m
+[31m-            } [m
+[31m-            this.monitor.handleClick( pos );[m
+[32m+[m[32m            this.fox.show();[m[41m           [m
+[32m+[m[32m            if( showScreen ){[m
+[32m+[m[32m                this.updateScreen.handleClick( pos );[m
+[32m+[m[32m            }[m
+[32m+[m[32m            if( !showScreen ){[m
+[32m+[m[32m                if ( this.fox.handleClick( pos ) ){[m
+[32m+[m[32m                    this.updateScreen.show();[m
+[32m+[m[32m                 }[m
+[32m+[m[32m                if( health > 20 ){[m[41m  [m
+[32m+[m[32m                    this.icon1.handleClick( pos );[m
+[32m+[m[32m                    this.icon2.handleClick( pos );[m
+[32m+[m[32m                    this.icon3.handleClick( pos );[m
+[32m+[m[32m                    this.icon4.handleClick( pos );[m
+[32m+[m[32m                }[m[41m [m
+[32m+[m[32m                this.monitor.handleClick( pos );[m
+[32m+[m[32m            }[m
+         }                   [m
+[31m-        if(!isShow){[m
+[32m+[m[32m        if( !isShow ){[m
+             this.icon1.hide();[m
+             this.icon2.hide();[m
+             this.icon3.hide();[m
+[36m@@ -194,22 +202,24 @@[m [mvar GameLayer = cc.LayerColor.extend({[m
+         this.StatIcon3.setVisible(false); [m
+         this.StatIcon4.setVisible(false);      [m
+         if(isShow){[m
+[31m-            this.icon1.handleMouseMove( pos );[m
+[31m-            this.icon2.handleMouseMove( pos );[m
+[31m-            this.icon3.handleMouseMove( pos );[m
+[31m-            this.icon4.handleMouseMove( pos );[m
+[31m-            this.fox.handleMouseMove( pos );[m
+[31m-            if(focusIcon1){[m
+[31m-                this.StatIcon1.setVisible(true);[m
+[31m-            }[m
+[31m-            if(focusIcon2){[m
+[31m-                this.StatIcon2.setVisible(true);[m
+[31m-            }[m
+[31m-            if(focusIcon3){[m
+[31m-                this.StatIcon3.setVisible(true);[m
+[31m-            }[m
+[31m-            if(focusIcon4){[m
+[31m-                this.StatIcon4.setVisible(true);[m
+[32m+[m[32m            if( !showScreen ){[m
+[32m+[m[32m                this.icon1.handleMouseMove( pos );[m
+[32m+[m[32m                this.icon2.handleMouseMove( pos );[m
+[32m+[m[32m                this.icon3.handleMouseMove( pos );[m
+[32m+[m[32m                this.icon4.handleMouseMove( pos );[m
+[32m+[m[32m                this.fox.handleMouseMove( pos );[m
+[32m+[m[32m                if(focusIcon1){[m
+[32m+[m[32m                    this.StatIcon1.setVisible(true);[m
+[32m+[m[32m                }[m
+[32m+[m[32m                if(focusIcon2){[m
+[32m+[m[32m                    this.StatIcon2.setVisible(true);[m
+[32m+[m[32m                }[m
+[32m+[m[32m                if(focusIcon3){[m
+[32m+[m[32m                    this.StatIcon3.setVisible(true);[m
+[32m+[m[32m                }[m
+[32m+[m[32m                if(focusIcon4){[m
+[32m+[m[32m                    this.StatIcon4.setVisible(true);[m
+[32m+[m[32m                }[m
+             }[m
+         }[m
+         if(!isShow){[m
+warning: LF will be replaced by CRLF in src/GameLayer.js.
+The file will have its original line endings in your working directory.
