@@ -43,7 +43,6 @@ var Screen = cc.Sprite.extend( {
             showPrice[4] = true;
         }
         else {
-            console.log( 'Clear Array' );
             showPrice = [ false, false, false, false ,false ];
         }
     },

@@ -74,27 +74,33 @@ var GameLayer = cc.LayerColor.extend({
 
         this.price1 = cc.LabelTTF.create( 'Upgrade Art : '+art[2]+' ฿ ', 'Gungsuh', 25 );
         this.price1.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.price1.setPosition( new cc.Point( 895, 618 ) );
+        this.price1.setPosition( new cc.Point( 650, 488 ) );
         this.addChild( this.price1 , 2 );
         this.price1.setVisible(false);
 
         this.price2 = cc.LabelTTF.create( 'Upgrade Sound : '+sound[2]+' ฿ ', 'Gungsuh', 25 );
         this.price2.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.price2.setPosition( new cc.Point( 895, 520 ) );
+        this.price2.setPosition( new cc.Point( 819, 488 ) );
         this.addChild( this.price2 , 2 );
         this.price2.setVisible(false);
 
         this.price3 = cc.LabelTTF.create( 'Upgrade Writing : '+writing[2]+' ฿ ', 'Gungsuh', 25 );
         this.price3.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.price3.setPosition( new cc.Point( 895, 408 ) );
+        this.price3.setPosition( new cc.Point( 997, 488 ) );
         this.addChild( this.price3 , 2 );
         this.price3.setVisible(false);
 
         this.price4 = cc.LabelTTF.create( 'Upgrade Code : '+code[2]+' ฿ ', 'Gungsuh', 25 );
         this.price4.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.price4.setPosition( new cc.Point( 895, 300 ) );
+        this.price4.setPosition( new cc.Point( 1150, 488 ) );
         this.addChild( this.price4 , 2 );
         this.price4.setVisible(false);
+
+        this.price5 = cc.LabelTTF.create( 'Money 250 ฿ ++', 'Gungsuh', 25 );
+        this.price5.setColor( new cc.Color3B( 50, 50, 50 ) );
+        this.price5.setPosition( new cc.Point( 1105, 373 ) );
+        this.addChild( this.price5 , 2 );
+        this.price5.setVisible(false);
     },
     createIcons: function(){
         this.icon1 = new Icon1();
@@ -111,6 +117,18 @@ var GameLayer = cc.LayerColor.extend({
 
         this.fox = new Fox();
         this.addChild( this.fox , 1);
+    },
+    hideIcons: function(){
+        this.StatIcon1.setVisible(false);
+        this.StatIcon2.setVisible(false);
+        this.StatIcon3.setVisible(false); 
+        this.StatIcon4.setVisible(false);   
+
+        this.price1.setVisible(false);
+        this.price2.setVisible(false);
+        this.price3.setVisible(false);
+        this.price4.setVisible(false);
+        this.price5.setVisible(false);
     },
     createParameter: function(){
         var draw = cc.DrawNode.create();
@@ -217,15 +235,24 @@ var GameLayer = cc.LayerColor.extend({
      },
     onMouseMoved:function( e ){
         var pos = e.getLocation();
-        this.StatIcon1.setVisible(false);
-        this.StatIcon2.setVisible(false);
-        this.StatIcon3.setVisible(false); 
-        this.StatIcon4.setVisible(false);      
+        this.hideIcons();   
         if(isShow){
             if( showScreen ){
                 this.updateScreen.handleMouseMove( pos );
                 if( showPrice[0] == true ){
-
+                    this.price1.setVisible(true);
+                }
+                if( showPrice[1] == true ){
+                    this.price2.setVisible(true);
+                }
+                if( showPrice[2] == true ){
+                    this.price3.setVisible(true);
+                }
+                if( showPrice[3] == true ){
+                    this.price4.setVisible(true);
+                }
+                if( showPrice[4] == true ){
+                    this.price5.setVisible(true);
                 }
             }
             if( !showScreen ){
