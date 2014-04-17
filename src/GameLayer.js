@@ -71,6 +71,30 @@ var GameLayer = cc.LayerColor.extend({
         this.StatIcon4.setPosition( new cc.Point( 895, 300 ) );
         this.addChild( this.StatIcon4 , 1 );
         this.StatIcon4.setVisible(false);
+
+        this.price1 = cc.LabelTTF.create( 'Upgrade Art : '+art[2]+' ฿ ', 'Gungsuh', 25 );
+        this.price1.setColor( new cc.Color3B( 50, 50, 50 ) );
+        this.price1.setPosition( new cc.Point( 895, 618 ) );
+        this.addChild( this.price1 , 2 );
+        this.price1.setVisible(false);
+
+        this.price2 = cc.LabelTTF.create( 'Upgrade Sound : '+sound[2]+' ฿ ', 'Gungsuh', 25 );
+        this.price2.setColor( new cc.Color3B( 50, 50, 50 ) );
+        this.price2.setPosition( new cc.Point( 895, 520 ) );
+        this.addChild( this.price2 , 2 );
+        this.price2.setVisible(false);
+
+        this.price3 = cc.LabelTTF.create( 'Upgrade Writing : '+writing[2]+' ฿ ', 'Gungsuh', 25 );
+        this.price3.setColor( new cc.Color3B( 50, 50, 50 ) );
+        this.price3.setPosition( new cc.Point( 895, 408 ) );
+        this.addChild( this.price3 , 2 );
+        this.price3.setVisible(false);
+
+        this.price4 = cc.LabelTTF.create( 'Upgrade Code : '+code[2]+' ฿ ', 'Gungsuh', 25 );
+        this.price4.setColor( new cc.Color3B( 50, 50, 50 ) );
+        this.price4.setPosition( new cc.Point( 895, 300 ) );
+        this.addChild( this.price4 , 2 );
+        this.price4.setVisible(false);
     },
     createIcons: function(){
         this.icon1 = new Icon1();
@@ -198,22 +222,28 @@ var GameLayer = cc.LayerColor.extend({
         this.StatIcon3.setVisible(false); 
         this.StatIcon4.setVisible(false);      
         if(isShow){
+            if( showScreen ){
+                this.updateScreen.handleMouseMove( pos );
+                if( showPrice[0] == true ){
+
+                }
+            }
             if( !showScreen ){
                 this.icon1.handleMouseMove( pos );
                 this.icon2.handleMouseMove( pos );
                 this.icon3.handleMouseMove( pos );
                 this.icon4.handleMouseMove( pos );
                 this.fox.handleMouseMove( pos );
-                if(focusIcon1){
+                if( focusIcon1 ){
                     this.StatIcon1.setVisible(true);
                 }
-                if(focusIcon2){
+                if( focusIcon2 ){
                     this.StatIcon2.setVisible(true);
                 }
-                if(focusIcon3){
+                if( focusIcon3 ){
                     this.StatIcon3.setVisible(true);
                 }
-                if(focusIcon4){
+                if( focusIcon4 ){
                     this.StatIcon4.setVisible(true);
                 }
             }
