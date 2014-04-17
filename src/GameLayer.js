@@ -5,6 +5,7 @@ var code = [0,5,500];
 var art = [0,5,500];
 var sound = [0,5,500];
 var writing = [0,5,500];
+// [ current progress , update per click , update money ]
 var GameLayer = cc.LayerColor.extend({
     init: function() {
         this._super( new cc.Color4B( 127, 127, 127, 255 ) );
@@ -96,9 +97,9 @@ var GameLayer = cc.LayerColor.extend({
         this.addChild( this.price4 , 2 );
         this.price4.setVisible(false);
 
-        this.price5 = cc.LabelTTF.create( 'Money 250 ฿ ++', 'Gungsuh', 25 );
+        this.price5 = cc.LabelTTF.create( 'Money 250 ฿ ++  Health 30 --', 'Gungsuh', 22 );
         this.price5.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.price5.setPosition( new cc.Point( 1105, 373 ) );
+        this.price5.setPosition( new cc.Point( 1128, 373 ) );
         this.addChild( this.price5 , 2 );
         this.price5.setVisible(false);
     },
@@ -189,6 +190,16 @@ var GameLayer = cc.LayerColor.extend({
         }
         this.moneyNum.setString( money + ' ฿' );
         this.updateMoney();
+
+        this.StatIcon1.setString( 'Art: '+art[1] +'++  Health: 40--' );
+        this.StatIcon2.setString( 'Sound: '+sound[1] +'++  Health: 40--' );
+        this.StatIcon3.setString( 'Writing: '+writing[1] +'++  Health: 40--' );
+        this.StatIcon4.setString( 'Code: '+code[1] +'++  Health: 40--' );
+
+        this.price1.setString( 'Upgrade Art : '+art[2]+' ฿ ' );
+        this.price2.setString( 'Upgrade Sound : '+sound[2]+' ฿ ' );
+        this.price3.setString( 'Upgrade Writing : '+writing[2]+' ฿ ' );
+        this.price4.setString( 'Upgrade Code : '+code[2]+' ฿ ' );
     },
      onMouseDown:function ( e ){      
         var pos = e.getLocation();
@@ -226,7 +237,9 @@ var GameLayer = cc.LayerColor.extend({
             this.icon4.hide();
             this.fox.hide(); 
             this.audio.handleClick( pos ); 
-            this.TV.handleClick( pos );
+            if( money >= 25 ) {
+                this.TV.handleClick( pos );
+            }
             this.endButton.handleClick( pos );       
          }
         this.update();

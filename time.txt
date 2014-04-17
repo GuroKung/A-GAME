@@ -1,5 +1,0 @@
-add moniter - 1.45 hr
-make icon - 39.25  min
-add icon - 52.19 min
-add chat icon when focus - 1.29 hr
-add icon status label - 46.39 min
