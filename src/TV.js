@@ -10,7 +10,7 @@ var TV = cc.Sprite.extend( {
     	if(cc.rectContainsPoint( boxTV, touchLocation ) ){
         	console.log( 'Click: TV' );
             health += 10;
-            money -= 25;
+            money -= 100;
         }       
     },
     handleMouseMove:function( touchLocation ){
