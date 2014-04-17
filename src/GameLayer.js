@@ -210,7 +210,7 @@ var GameLayer = cc.LayerColor.extend({
                 if ( this.fox.handleClick( pos ) ){
                     this.updateScreen.show();
                  }
-                if( health > 20 ){  
+                if( health >= 40 ){  
                     this.icon1.handleClick( pos );
                     this.icon2.handleClick( pos );
                     this.icon3.handleClick( pos );
@@ -225,10 +225,8 @@ var GameLayer = cc.LayerColor.extend({
             this.icon3.hide();
             this.icon4.hide();
             this.fox.hide(); 
-            if( health > 0 ){     
-                this.TV.handleClick( pos );
-                this.audio.handleClick( pos );
-            } 
+            this.audio.handleClick( pos ); 
+            this.TV.handleClick( pos );
             this.endButton.handleClick( pos );       
          }
         this.update();

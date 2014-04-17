@@ -11,7 +11,7 @@ var Icon2 = cc.Sprite.extend( {
             touchLocation.y>476&&touchLocation.y<567){
             console.log( 'Click: Icon2' );
             health -= 40;
-            sound[0] += soundPlus[1];
+            sound[0] += sound[1];
         }
     },
     handleMouseMove: function( touchLocation ){
