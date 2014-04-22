@@ -1,10 +1,10 @@
 var day = 1;
 var health = 100;
 var money = 500;
-var code = [0,5,500];
-var art = [0,5,500];
-var sound = [0,5,500];
-var writing = [0,5,500];
+var code = [30,5,500];
+var art = [60,5,500];
+var sound = [20,5,500];
+var writing = [40,5,500];
 // [ current progress , update per click , update money ]
 var GameLayer = cc.LayerColor.extend({
     init: function() {
@@ -19,6 +19,9 @@ var GameLayer = cc.LayerColor.extend({
         this.createParameter();//add parameter
         this.createIcons();
         this.createStatIcon();
+
+        this.guro = new Guro();
+        this.addChild( this.guro );
 
         this.setMouseEnabled(true); // use mouse
         this.updateMoney();

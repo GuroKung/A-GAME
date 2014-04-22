@@ -25,7 +25,8 @@
             'src/Icon3.js',
             'src/Icon4.js',
             'src/Fox.js',
-            'src/Screen.js'     //add your own files in order here
+            'src/Screen.js',
+            'src/Guro.js'     //add your own files in order here
         ]
     };
 
