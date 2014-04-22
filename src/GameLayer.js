@@ -249,7 +249,8 @@ var GameLayer = cc.LayerColor.extend({
      },
     onMouseMoved:function( e ){
         var pos = e.getLocation();
-        this.hideIcons();   
+        this.hideIcons();
+        this.guro.handleMouseMove( pos );   
         if(isShow){
             if( showScreen ){
                 this.updateScreen.handleMouseMove( pos );
