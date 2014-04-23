@@ -1,3 +1,4 @@
+var play = true;
 var texAudio = cc.TextureCache.getInstance().addImage( 'images/audio_2.png' );
 var Audio = cc.Sprite.extend( {
     ctor: function() {
@@ -10,7 +11,11 @@ var Audio = cc.Sprite.extend( {
         var boxAudio = this.getBoundingBox();
     	if(cc.rectContainsPoint( boxAudio, touchLocation ) ){
         	console.log( 'Click: Audio' );
-
+            if(play) {
+                cc.AudioEngine.end();
+                play = false;
+            }
+            else cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
         }
     },
     handleMouseMove: function( touchLocation ){
