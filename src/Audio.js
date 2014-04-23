@@ -15,7 +15,10 @@ var Audio = cc.Sprite.extend( {
                 cc.AudioEngine.end();
                 play = false;
             }
-            else cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
+            else {
+                cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
+                play = true;
+            }
         }
     },
     handleMouseMove: function( touchLocation ){
