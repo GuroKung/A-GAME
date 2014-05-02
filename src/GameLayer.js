@@ -17,8 +17,8 @@ var GameLayer = cc.LayerColor.extend({
         this.createObjects(); // add objects
         this.createLabel(); //add status label
         this.createParameter();//add parameter
-        this.createIcons();
-        this.createStatIcon();
+        this.createIcons();// add icons
+        this.createStatIcon();// add status icon
 
         this.guro = new Guro();
         this.addChild( this.guro );
@@ -241,7 +241,7 @@ var GameLayer = cc.LayerColor.extend({
             this.icon4.hide();
             this.fox.hide(); 
             this.audio.handleClick( pos ); 
-            if( money >= 25 ) {
+            if( money >= 100 ) {
                 this.TV.handleClick( pos );
             }
             this.endButton.handleClick( pos );       
