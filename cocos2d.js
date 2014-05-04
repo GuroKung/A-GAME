@@ -27,7 +27,9 @@
             'src/Fox.js',
             'src/Screen.js',
             'src/Guro.js',
-            'src/Chat.js'     //add your own files in order here
+            'src/Chat.js',
+            'src/GameOver.js',
+            'src/Certificate.js'     //add your own files in order here
         ]
     };
 
