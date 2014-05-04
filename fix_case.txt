@@ -1,0 +1,4 @@
+- Runout --> TC still can click         O
+- health > 40 only can click            O
+- money < 0 can't buy anything      X
+- can't click update icon when money < update money  O

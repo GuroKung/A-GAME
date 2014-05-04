@@ -26,7 +26,8 @@
             'src/Icon4.js',
             'src/Fox.js',
             'src/Screen.js',
-            'src/Guro.js'     //add your own files in order here
+            'src/Guro.js',
+            'src/Chat.js'     //add your own files in order here
         ]
     };
 

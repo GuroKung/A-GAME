@@ -15,7 +15,7 @@ var GameLayer = cc.LayerColor.extend({
         this.addChild( this.room );//background
 
         this.createObjects(); // add objects
-        this.createLabel(); //add status label
+        this.createStatLabel(); //add status label
         this.createParameter();//add parameter
         this.createIcons();// add icons
         this.createStatIcon();// add status icon
@@ -52,60 +52,34 @@ var GameLayer = cc.LayerColor.extend({
         this.addChild( this.updateScreen ,2 );
 
     },
-    createStatIcon: function(){
-        this.StatIcon1 = cc.LabelTTF.create( 'Art: '+art[1] +'++  Health: 40--', 'Viner Hand ITC', 25 );
-        this.StatIcon1.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.StatIcon1.setPosition( new cc.Point( 895, 618 ) );
+    createStatIcon: function(){      
+
+        this.StatIcon1 = this.createLabel( 'Art: '+art[1] +'++  Health: 40--', 'Viner Hand ITC', 25 , false ,895, 618 );
         this.addChild( this.StatIcon1 , 1 );
-        this.StatIcon1.setVisible(false);
 
-        this.StatIcon2 = cc.LabelTTF.create( 'Sound: '+sound[1] +'++  Health: 40--', 'Viner Hand ITC', 25 );
-        this.StatIcon2.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.StatIcon2.setPosition( new cc.Point( 895, 520 ) );
+        this.StatIcon2 = this.createLabel( 'Sound: '+sound[1] +'++  Health: 40--', 'Viner Hand ITC', 25 , false ,895, 520 );
         this.addChild( this.StatIcon2 , 1 );
-        this.StatIcon2.setVisible(false);
 
-        this.StatIcon3 = cc.LabelTTF.create( 'Writing: '+writing[1] +'++  Health: 40--', 'Viner Hand ITC', 25 );
-        this.StatIcon3.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.StatIcon3.setPosition( new cc.Point( 895, 408 ) );
+        this.StatIcon3 =  this.createLabel( 'Writing: '+writing[1] +'++  Health: 40--', 'Viner Hand ITC', 25 , false ,895, 408 );
         this.addChild( this.StatIcon3 , 1 );
-        this.StatIcon3.setVisible(false);
 
-        this.StatIcon4 = cc.LabelTTF.create( 'Code: '+code[1] +'++  Health: 40--', 'Viner Hand ITC', 25 );
-        this.StatIcon4.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.StatIcon4.setPosition( new cc.Point( 895, 300 ) );
+        this.StatIcon4 = this.createLabel( 'Code: '+code[1] +'++  Health: 40--', 'Viner Hand ITC', 25 , false ,895, 300 );
         this.addChild( this.StatIcon4 , 1 );
-        this.StatIcon4.setVisible(false);
 
-        this.price1 = cc.LabelTTF.create( 'Upgrade Art : '+art[2]+' ฿ ', 'Gungsuh', 25 );
-        this.price1.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.price1.setPosition( new cc.Point( 650, 488 ) );
+        this.price1 = this.createLabel( 'Upgrade Art : '+art[2]+' ฿ ', 'Gungsuh', 25 , false ,650, 488 );
         this.addChild( this.price1 , 2 );
-        this.price1.setVisible(false);
 
-        this.price2 = cc.LabelTTF.create( 'Upgrade Sound : '+sound[2]+' ฿ ', 'Gungsuh', 25 );
-        this.price2.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.price2.setPosition( new cc.Point( 819, 488 ) );
+        this.price2 = this.createLabel( 'Upgrade Sound : '+sound[2]+' ฿ ', 'Gungsuh', 25 , false ,819, 488 );
         this.addChild( this.price2 , 2 );
-        this.price2.setVisible(false);
 
-        this.price3 = cc.LabelTTF.create( 'Upgrade Writing : '+writing[2]+' ฿ ', 'Gungsuh', 25 );
-        this.price3.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.price3.setPosition( new cc.Point( 997, 488 ) );
+        this.price3 = this.createLabel( 'Upgrade Writing : '+writing[2]+' ฿ ', 'Gungsuh', 25 , false ,997, 488 );
         this.addChild( this.price3 , 2 );
-        this.price3.setVisible(false);
 
-        this.price4 = cc.LabelTTF.create( 'Upgrade Code : '+code[2]+' ฿ ', 'Gungsuh', 25 );
-        this.price4.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.price4.setPosition( new cc.Point( 1150, 488 ) );
+        this.price4 = this.createLabel( 'Upgrade Code : '+code[2]+' ฿ ', 'Gungsuh', 25 , false ,1150, 488 );
         this.addChild( this.price4 , 2 );
-        this.price4.setVisible(false);
 
-        this.price5 = cc.LabelTTF.create( 'Money 250 ฿ ++  Health 30 --', 'Gungsuh', 22 );
-        this.price5.setColor( new cc.Color3B( 50, 50, 50 ) );
-        this.price5.setPosition( new cc.Point( 1128, 373 ) );
+        this.price5 = this.createLabel( 'Money 250 ฿ ++  Health 30 --', 'Gungsuh', 22 , false ,1128, 373 );
         this.addChild( this.price5 , 2 );
-        this.price5.setVisible(false);
     },
     createIcons: function(){
         this.icon1 = new Icon1();
@@ -143,30 +117,33 @@ var GameLayer = cc.LayerColor.extend({
         draw.drawSegment( new cc.Point(1000,584), new cc.Point(1003+(3*sound[0]),584),10, new cc.Color4F(0,0.635,0.909,1)); // sound 
         draw.drawSegment( new cc.Point(1000,545), new cc.Point(1003+(3*writing[0]),545),10, new cc.Color4F(0.423,0.184,0.517,1)); // writing
     },
-    createLabel: function(){
-        this.dayLabel = cc.LabelTTF.create( 'DAY: ', 'Stencil', 60 );
-        this.dayLabel.setPosition( new cc.Point( 118, 715 ) );
+    createStatLabel: function(){
+        this.dayLabel = this.createLabel( 'DAY: ', 'Stencil', 60 , true ,118, 715 , 'white');
         this.addChild( this.dayLabel ); //day:
 
-        this.dayNum = cc.LabelTTF.create( day, 'Stencil', 60 );
-        this.dayNum.setPosition( new cc.Point( 215, 715 ) );
+        this.dayNum = this.createLabel( day, 'Stencil', 60 , true ,215, 715 , 'white');
         this.addChild( this.dayNum );
 
-        this.healthLabel = cc.LabelTTF.create( 'HEALTH: ', 'Stencil', 60 );
-        this.healthLabel.setPosition( new cc.Point( 175, 650 ) );
+        this.healthLabel = this.createLabel( 'HEALTH: ', 'Stencil', 60 , true ,175, 650 , 'white');
         this.addChild( this.healthLabel );//health:
         
-        this.healthNum = cc.LabelTTF.create(health, 'Stencil', 60 );
-        this.healthNum.setPosition( new cc.Point( 350, 650 ) );
+        this.healthNum = this.createLabel( health, 'Stencil', 60 , true ,350, 650 , 'white');
         this.addChild( this.healthNum );
 
-        this.moneyLabel = cc.LabelTTF.create( 'MONEY: ', 'Stencil', 60 );
-        this.moneyLabel.setPosition( new cc.Point( 160, 585 ) );
+        this.moneyLabel = this.createLabel( 'MONEY: ', 'Stencil', 60 , true ,160, 585 , 'white');
         this.addChild( this.moneyLabel );//money:
 
-        this.moneyNum = cc.LabelTTF.create( money+' ฿', 'Stencil', 60 );
-        this.moneyNum.setPosition( new cc.Point( 315, 585 ) );
+        this.moneyNum = this.createLabel( money+' ฿', 'Stencil', 60 , true ,315, 585 , 'white');
         this.addChild( this.moneyNum );
+    },
+    createLabel: function( str, font, size, show, posx , posy , c){
+        this.Temp = cc.LabelTTF.create( str, font, size );
+        if( c != 'white' ) this.Temp.setColor( new cc.Color3B( 50, 50, 50 ) );
+        this.Temp.setVisible( show );
+        this.Temp.setPosition( new cc.Point( posx, posy ) );
+
+        return this.Temp;
+
     },
     updateMoney: function() {      
         var pos = new cc.Point( 330, 585 );

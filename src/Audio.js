@@ -16,6 +16,7 @@ var Audio = cc.Sprite.extend( {
                 play = false;
             }
             else {
+                cc.AudioEngine.end();
                 cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
                 play = true;
             }
