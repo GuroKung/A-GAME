@@ -53,7 +53,6 @@ var GameLayer = cc.LayerColor.extend({
 
     },
     createStatIcon: function(){      
-
         this.StatIcon1 = this.createLabel( 'Art: '+art[1] +'++  Health: 40--', 'Viner Hand ITC', 25 , false ,895, 618 );
         this.addChild( this.StatIcon1 , 1 );
 
@@ -137,13 +136,13 @@ var GameLayer = cc.LayerColor.extend({
         this.addChild( this.moneyNum );
     },
     createLabel: function( str, font, size, show, posx , posy , c){
+
         this.Temp = cc.LabelTTF.create( str, font, size );
         if( c != 'white' ) this.Temp.setColor( new cc.Color3B( 50, 50, 50 ) );
         this.Temp.setVisible( show );
         this.Temp.setPosition( new cc.Point( posx, posy ) );
 
         return this.Temp;
-
     },
     updateMoney: function() {      
         var pos = new cc.Point( 330, 585 );
@@ -171,7 +170,10 @@ var GameLayer = cc.LayerColor.extend({
         }
         this.moneyNum.setString( money + ' ฿' );
         this.updateMoney();
-
+        this.setIcon();
+        
+    },
+    setIcon: function (){
         this.StatIcon1.setString( 'Art: '+art[1] +'++  Health: 40--' );
         this.StatIcon2.setString( 'Sound: '+sound[1] +'++  Health: 40--' );
         this.StatIcon3.setString( 'Writing: '+writing[1] +'++  Health: 40--' );
@@ -182,14 +184,41 @@ var GameLayer = cc.LayerColor.extend({
         this.price3.setString( 'Upgrade Writing : '+writing[2]+' ฿ ' );
         this.price4.setString( 'Upgrade Code : '+code[2]+' ฿ ' );
     },
-     onMouseDown:function ( e ){      
-        var pos = e.getLocation();
-        console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
+    checkMouseMoved: function( pos ){
+        if(isShow){
+            if( showScreen ){
+                this.updateScreen.handleMouseMove( pos );
+                if( showPrice[0] == true ) this.price1.setVisible(true);
+                if( showPrice[1] == true ) this.price2.setVisible(true);
+                if( showPrice[2] == true ) this.price3.setVisible(true);
+                if( showPrice[3] == true ) this.price4.setVisible(true);
+                if( showPrice[4] == true ) this.price5.setVisible(true);
+            }
+            if( !showScreen ){
+                this.icon1.handleMouseMove( pos );
+                this.icon2.handleMouseMove( pos );
+                this.icon3.handleMouseMove( pos );
+                this.icon4.handleMouseMove( pos );
+                this.fox.handleMouseMove( pos );
+
+                if( focusIcon1 ) this.StatIcon1.setVisible(true);
+                if( focusIcon2 ) this.StatIcon2.setVisible(true);
+                if( focusIcon3 ) this.StatIcon3.setVisible(true);
+                if( focusIcon4 ) this.StatIcon4.setVisible(true);
+            }
+        }
+        if(!isShow){
+            this.endButton.handleMouseMove( pos );
+            this.PC.handleMouseMove( pos );
+            this.TV.handleMouseMove( pos );
+            this.audio.handleMouseMove( pos );
+        } 
+    },
+    checkMouseDown: function( pos ){
         if( this.PC.handleClick( pos ) ){
             this.monitor.show();           
         }
         if ( isShow ) {
-            console.log('Being show');
             this.icon1.show();
             this.icon2.show();
             this.icon3.show();
@@ -223,57 +252,18 @@ var GameLayer = cc.LayerColor.extend({
             }
             this.endButton.handleClick( pos );       
          }
+    },
+     onMouseDown:function ( e ){      
+        var pos = e.getLocation();
+        console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
+        this.checkMouseDown( pos );
         this.update();
      },
     onMouseMoved:function( e ){
         var pos = e.getLocation();
         this.hideIcons();
         this.guro.handleMouseMove( pos );   
-        if(isShow){
-            if( showScreen ){
-                this.updateScreen.handleMouseMove( pos );
-                if( showPrice[0] == true ){
-                    this.price1.setVisible(true);
-                }
-                if( showPrice[1] == true ){
-                    this.price2.setVisible(true);
-                }
-                if( showPrice[2] == true ){
-                    this.price3.setVisible(true);
-                }
-                if( showPrice[3] == true ){
-                    this.price4.setVisible(true);
-                }
-                if( showPrice[4] == true ){
-                    this.price5.setVisible(true);
-                }
-            }
-            if( !showScreen ){
-                this.icon1.handleMouseMove( pos );
-                this.icon2.handleMouseMove( pos );
-                this.icon3.handleMouseMove( pos );
-                this.icon4.handleMouseMove( pos );
-                this.fox.handleMouseMove( pos );
-                if( focusIcon1 ){
-                    this.StatIcon1.setVisible(true);
-                }
-                if( focusIcon2 ){
-                    this.StatIcon2.setVisible(true);
-                }
-                if( focusIcon3 ){
-                    this.StatIcon3.setVisible(true);
-                }
-                if( focusIcon4 ){
-                    this.StatIcon4.setVisible(true);
-                }
-            }
-        }
-        if(!isShow){
-            this.endButton.handleMouseMove( pos );
-            this.PC.handleMouseMove( pos );
-            this.TV.handleMouseMove( pos );
-            this.audio.handleMouseMove( pos );
-        }        
+        this.checkMouseMoved( pos );      
     }
 });
 
