@@ -17,6 +17,7 @@ var Icon2 = cc.Sprite.extend( {
                 health -= 40;
                 sound[0] += sound[1];
             }
+            cc.AudioEngine.getInstance().playEffect( 'sound/typingKeyboard.mp3' );
         }
     },
     handleMouseMove: function( touchLocation ){

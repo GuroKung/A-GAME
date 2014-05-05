@@ -1,4 +1,4 @@
-var day = 15;
+var day = 1;
 var health = 100;
 var money = 500;
 var code = [0,5,500];
@@ -25,7 +25,7 @@ var GameLayer = cc.LayerColor.extend({
 
         this.setMouseEnabled(true); // use mouse
         this.updateMoney();
-        //cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
+        cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
 
         return true;
     },
@@ -254,6 +254,15 @@ var GameLayer = cc.LayerColor.extend({
             if( day > 20 ) this.changeScene();       
          }
     },
+    resetLayer: function(){
+        day = 1;
+        health = 100;
+        money = 500;
+        code = [0,5,500];
+        art = [0,5,500];
+        sound = [0,5,500];
+        writing = [0,5,500];
+    },
     changeScene: function(){
             var scene = GameOver.scene();
             var gameTransition = cc.TransitionFade.create(3, scene);
@@ -282,3 +291,11 @@ var StartScene = cc.Scene.extend({
     }
 });
 
+GameLayer.scene = function () {
+    var scene = cc.Scene.create();
+    var layer = new GameLayer();
+    layer.resetLayer();
+    layer.init();
+    scene.addChild(layer);
+    return scene;
+};
