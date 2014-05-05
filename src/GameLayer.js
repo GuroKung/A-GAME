@@ -14,6 +14,9 @@ var GameLayer = cc.LayerColor.extend({
         this.room = new Background();
         this.addChild( this.room );//background
 
+        this.chat = new Chat();
+        this.addChild( this.chat );
+
         this.createObjects(); // add objects
         this.createStatLabel(); //add status label
         this.createParameter();//add parameter
@@ -22,6 +25,9 @@ var GameLayer = cc.LayerColor.extend({
 
         this.guro = new Guro();
         this.addChild( this.guro );
+
+        this.dialog =  this.createLabel( 'Say  Ahhhhhh!!','Viner Hand ITC', 38, false, 265 , 115 );
+        this.addChild(  this.dialog );
 
         this.setMouseEnabled(true); // use mouse
         this.updateMoney();
@@ -268,6 +274,27 @@ var GameLayer = cc.LayerColor.extend({
             var gameTransition = cc.TransitionFade.create(3, scene);
             cc.Director.getInstance().replaceScene(gameTransition);
     },
+    chatting: function(){
+/*        var dialog = '';        
+        var num = 1+Math.floor(Math.random() * 5);
+        console.log( 'num: ' + num );
+
+        if( num == 1 ) dialog = " I'm so tried ";
+        else if ( num == 2 ) dialog = ' Wanna sleep ';
+        else if ( num == 3) dialog = ' Final exam is coming !! ';
+        else if ( num == 4 ) dialog = ' Why I have to do this !? ';
+        else dialog = " Let's code ";*/
+        
+        if( talk == true ) {
+            //this.dialog.setString( dialog );
+            this.chat.show();
+            this.dialog.setVisible( true );
+        }
+        else {
+            this.chat.hide();
+            this.dialog.setVisible( false );
+        }  
+    },
      onMouseDown:function ( e ){      
         var pos = e.getLocation();
         console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
@@ -277,7 +304,8 @@ var GameLayer = cc.LayerColor.extend({
     onMouseMoved:function( e ){
         var pos = e.getLocation();
         this.hideIcons();
-        this.guro.handleMouseMove( pos );   
+        this.guro.handleMouseMove( pos );
+        this.chatting();       
         this.checkMouseMoved( pos );      
     }
 });

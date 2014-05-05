@@ -1,3 +1,4 @@
+var dialog = '';
 var Guro = cc.Sprite.extend( {
     ctor: function() {
         this._super();
@@ -12,10 +13,22 @@ var Guro = cc.Sprite.extend( {
     handleMouseMove: function( touchLocation ){
         var boxGuro = this.getBoundingBox();  
             if( cc.rectContainsPoint ( boxGuro, touchLocation ) ){
-            console.log( 'Focus: Guro' );
             this.setTexture( cc.TextureCache.getInstance().addImage( 'images/guro_3.png' ) );
+            talk = true;
         }
-        else this.setTexture( cc.TextureCache.getInstance().addImage( 'images/guro.png' ) );
+        else {
+            this.setTexture( cc.TextureCache.getInstance().addImage( 'images/guro.png' ) );
+            talk = false;
+        }
+    },
+    chatting: function(){
+/*        var num = 1+Math.floor(Math.random() * 5);
+        console.log( 'num: ' + num );
+        if( num == 1 ) return " I'm so tried ";
+        else if ( num == 2 ) return ' Wanna sleep ';
+        else if ( num == 3) return ' Final exam is coming !! ';
+        else if ( num == 4 ) return ' Why I have to do this !? ';
+        else return " Let's code ";*/
     },
     complain: function(){
         var animation = new cc.Animation.create();
@@ -25,6 +38,8 @@ var Guro = cc.Sprite.extend( {
         animation.addSpriteFrameWithFile( 'images/guro_2.png' );
         animation.addSpriteFrameWithFile( 'images/guro_3.png' );
         animation.addSpriteFrameWithFile( 'images/guro.png' );
+
+        dialog = this.chatting();
 
         var movingAction = cc.Animate.create( animation );
         return this.runAction( movingAction );
