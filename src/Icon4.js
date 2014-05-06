@@ -9,7 +9,6 @@ var Icon4 = cc.Sprite.extend( {
     handleClick:function( touchLocation ){
         if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&
             touchLocation.y>266&&touchLocation.y<348){
-            console.log( 'Click: Icon4' );
             if( code[0]+code[1] >= 100 ){
                 code[0] = 100;
             }
@@ -23,7 +22,6 @@ var Icon4 = cc.Sprite.extend( {
     handleMouseMove: function( touchLocation ){
         if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&
             touchLocation.y>266&&touchLocation.y<348){
-            console.log( 'Focus: Icon4' );
             focusIcon4 = true;
             this.setTexture( cc.TextureCache.getInstance().addImage( 'images/icon4_2.png' ) );
         }

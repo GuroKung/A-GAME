@@ -8,7 +8,6 @@ var PC = cc.Sprite.extend( {
     handleClick:function( touchLocation ){
         var boxPC = this.getBoundingBox();
     	if( cc.rectContainsPoint( boxPC, touchLocation ) ){
-        	console.log( 'Click: PC' );
             return true;
         }
         else return false;
@@ -16,7 +15,6 @@ var PC = cc.Sprite.extend( {
     handleMouseMove:function( touchLocation ){
         var boxPC = this.getBoundingBox();
         if( cc.rectContainsPoint( boxPC, touchLocation ) ){
-            console.log( 'Focus: PC' );
             this.setTexture( texPC );
         }
         else this.setTexture(cc.TextureCache.getInstance().addImage( 'images/PC.png' ) );

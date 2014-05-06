@@ -9,7 +9,6 @@ var Icon2 = cc.Sprite.extend( {
     handleClick:function( touchLocation ){
         if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&
             touchLocation.y>476&&touchLocation.y<567){
-            console.log( 'Click: Icon2' );
             if( sound[0]+sound[1] >= 100 ){
                 sound[0] = 100;
             }
@@ -23,7 +22,6 @@ var Icon2 = cc.Sprite.extend( {
     handleMouseMove: function( touchLocation ){
         if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&
             touchLocation.y>476&&touchLocation.y<567){
-            console.log( 'Focus: Icon2' );
             focusIcon2 = true;
             this.setTexture( cc.TextureCache.getInstance().addImage( 'images/icon2_2.png' ) );
         }

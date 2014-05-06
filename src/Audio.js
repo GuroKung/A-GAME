@@ -10,7 +10,6 @@ var Audio = cc.Sprite.extend( {
     handleClick:function( touchLocation ){
         var boxAudio = this.getBoundingBox();
     	if(cc.rectContainsPoint( boxAudio, touchLocation ) ){
-        	console.log( 'Click: Audio' );
             if(play) {
                 cc.AudioEngine.end();
                 play = false;
@@ -25,7 +24,6 @@ var Audio = cc.Sprite.extend( {
     handleMouseMove: function( touchLocation ){
         var boxAudio = this.getBoundingBox();  
             if( cc.rectContainsPoint ( boxAudio, touchLocation ) ){
-            console.log( 'Focus: Audio' );
             this.setTexture( texAudio );
         }
         else this.setTexture( cc.TextureCache.getInstance().addImage( 'images/audio.png' ) );

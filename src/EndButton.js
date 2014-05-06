@@ -9,7 +9,6 @@ var EndButton = cc.Sprite.extend( {
     handleClick:function( touchLocation ){
         var boxEnd = this.getBoundingBox();
     	if( cc.rectContainsPoint( boxEnd, touchLocation ) ){
-        	console.log( 'Click: End button' );
         	day++;
             health = 100;
         }
@@ -17,7 +16,6 @@ var EndButton = cc.Sprite.extend( {
     handleMouseMove: function( touchLocation ){
         var boxEnd = this.getBoundingBox();  
             if( cc.rectContainsPoint( boxEnd, touchLocation ) ){
-            console.log( 'Focus: End button' );
             this.setTexture( texEnd );
         }
         else this.setTexture(cc.TextureCache.getInstance().addImage( 'images/button.png' ) );

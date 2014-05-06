@@ -26,12 +26,14 @@ var GameLayer = cc.LayerColor.extend({
         this.guro = new Guro();
         this.addChild( this.guro );
 
-        this.dialog =  this.createLabel( 'Say  Ahhhhhh!!','Viner Hand ITC', 38, false, 265 , 115 );
+        this.dialog =  this.createLabel( 'Say  Ahhhhhh!!','Viner Hand ITC', 34, false, 265 , 115 );
         this.addChild(  this.dialog );
 
         this.setMouseEnabled(true); // use mouse
         this.updateMoney();
         cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
+        this.schedule ( this.updateGuro , 10, cc.RepeatForever, 0);
+        this.schedule ( this.updateChat , 12, cc.RepeatForever, 0);
 
         return true;
     },
@@ -261,36 +263,37 @@ var GameLayer = cc.LayerColor.extend({
          }
     },
     resetLayer: function(){
-        day = 1;
-        health = 100;
-        money = 500;
-        code = [0,5,500];
-        art = [0,5,500];
-        sound = [0,5,500];
-        writing = [0,5,500];
+            day = 1;
+            health = 100;
+            money = 500;
+            code = [0,5,500];
+            art = [0,5,500];
+            sound = [0,5,500];
+            writing = [0,5,500];
     },
     changeScene: function(){
             var scene = GameOver.scene();
             var gameTransition = cc.TransitionFade.create(3, scene);
             cc.Director.getInstance().replaceScene(gameTransition);
     },
+    updateGuro: function(){
+            this.dialog.setString( this.guro.chatting() );
+            this.chat.show();
+            this.dialog.setVisible( true );       
+    },
+    updateChat: function(){
+        this.dialog.setVisible( false );
+        this.chat.hide();
+        isComplain = false; 
+    },
     chatting: function(){
-/*        var dialog = '';        
-        var num = 1+Math.floor(Math.random() * 5);
-        console.log( 'num: ' + num );
-
-        if( num == 1 ) dialog = " I'm so tried ";
-        else if ( num == 2 ) dialog = ' Wanna sleep ';
-        else if ( num == 3) dialog = ' Final exam is coming !! ';
-        else if ( num == 4 ) dialog = ' Why I have to do this !? ';
-        else dialog = " Let's code ";*/
-        
+               
         if( talk == true ) {
-            //this.dialog.setString( dialog );
+            this.dialog.setString( 'Say  Ahhhhhh!!' );
             this.chat.show();
             this.dialog.setVisible( true );
         }
-        else {
+        else if(isComplain == false && talk == false){
             this.chat.hide();
             this.dialog.setVisible( false );
         }  

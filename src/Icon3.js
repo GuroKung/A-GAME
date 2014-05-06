@@ -9,7 +9,6 @@ var Icon3 = cc.Sprite.extend( {
     handleClick:function( touchLocation ){
         if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&
             touchLocation.y>368&&touchLocation.y<463){
-            console.log( 'Click: Icon3' );
             if( writing[0]+writing[1] >= 100 ){
                 writing[0] = 100;
             }
@@ -23,7 +22,6 @@ var Icon3 = cc.Sprite.extend( {
     handleMouseMove: function( touchLocation ){
         if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&
             touchLocation.y>368&&touchLocation.y<463){
-            console.log( 'Focus: Icon3' );
             focusIcon3 = true;
             this.setTexture( cc.TextureCache.getInstance().addImage( 'images/icon3_2.png' ) );
         }

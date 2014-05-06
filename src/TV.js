@@ -8,7 +8,6 @@ var TV = cc.Sprite.extend( {
     handleClick:function( touchLocation ){
         var boxTV = this.getBoundingBox();
     	if(cc.rectContainsPoint( boxTV, touchLocation ) ){
-        	console.log( 'Click: TV' );
             health += 10;
             money -= 100;
         }       
@@ -16,7 +15,6 @@ var TV = cc.Sprite.extend( {
     handleMouseMove:function( touchLocation ){
         var boxTV = this.getBoundingBox();
         if(cc.rectContainsPoint( boxTV, touchLocation ) ){
-            console.log( 'Focus: TV' );
             this.setTexture( texTV );
         }
         else this.setTexture( cc.TextureCache.getInstance().addImage( 'images/TV.png' ) );

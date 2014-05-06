@@ -8,7 +8,6 @@ var Fox = cc.Sprite.extend( {
     handleClick:function( touchLocation ){
         var boxFox = this.getBoundingBox();
     	if(cc.rectContainsPoint( boxFox, touchLocation ) ){
-        	console.log( 'Click: Fox' );
             return true;
         }
         else return false;
@@ -16,7 +15,6 @@ var Fox = cc.Sprite.extend( {
     handleMouseMove: function( touchLocation ){
         var boxFox = this.getBoundingBox();  
             if( cc.rectContainsPoint ( boxFox, touchLocation ) ){
-            console.log( 'Focus: Fox' );
             this.setTexture( cc.TextureCache.getInstance().addImage( 'images/fox_2.png' ) );
         }
         else this.setTexture( cc.TextureCache.getInstance().addImage( 'images/fox.png' ) );

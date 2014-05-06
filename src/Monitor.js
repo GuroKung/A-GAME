@@ -9,7 +9,6 @@ var Monitor = cc.Sprite.extend( {
     handleClick: function( touchLocation ){
     	var boxMonitor = this.getBoundingBox();
     	if( !cc.rectContainsPoint( boxMonitor, touchLocation ) ){
-        	console.log( 'Hide: Monitor' );
             this.setVisible(false);
             isShow = false;
         }
@@ -17,6 +16,5 @@ var Monitor = cc.Sprite.extend( {
     show: function(){
     	isShow = true;
     	this.setVisible(true);
-    	console.log( 'Show: Monitor' );
     }
 });
