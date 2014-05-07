@@ -7,8 +7,5 @@ var Certificate = cc.Sprite.extend( {
         this.setOpacity( 0 );
         var fadeIn = cc.FadeIn.create( 5.5 );
         this.runAction(fadeIn);
-    },
-    handleClick: function( touchLocation ){
-
     }
 });

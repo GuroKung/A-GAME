@@ -1,7 +1,7 @@
 (function() {
     var d = document;
     var c = {
-        COCOS2D_DEBUG: 2, //0 to turn debug off, 1 for basic debug, and 2 for full debug
+        COCOS2D_DEBUG: 1, //0 to turn debug off, 1 for basic debug, and 2 for full debug
         box2d: false,
         chipmunk: false,
         showFPS: true,
@@ -29,7 +29,8 @@
             'src/Guro.js',
             'src/Chat.js',
             'src/GameOver.js',
-            'src/Certificate.js'     //add your own files in order here
+            'src/Certificate.js',
+            'src/Message.js'     //add your own files in order here
         ]
     };
 

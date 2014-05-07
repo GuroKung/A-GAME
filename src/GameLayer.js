@@ -14,9 +14,6 @@ var GameLayer = cc.LayerColor.extend({
         this.room = new Background();
         this.addChild( this.room );//background
 
-        this.chat = new Chat();
-        this.addChild( this.chat );
-
         this.createObjects(); // add objects
         this.createStatLabel(); //add status label
         this.createParameter();//add parameter
@@ -31,9 +28,9 @@ var GameLayer = cc.LayerColor.extend({
 
         this.setMouseEnabled(true); // use mouse
         this.updateMoney();
-        cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
+        //cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
         this.schedule ( this.updateGuro , 10, cc.RepeatForever, 0);
-        this.schedule ( this.updateChat , 12, cc.RepeatForever, 0);
+        this.schedule ( this.hideChat , 12, cc.RepeatForever, 0);
 
         return true;
     },
@@ -53,11 +50,19 @@ var GameLayer = cc.LayerColor.extend({
         this.audio = new Audio();
         this.addChild( this.audio );
 
+        this.chat = new Chat();
+        this.addChild( this.chat );
+
+        this.message = new Message();
+        this.addChild( this.message , 1 );
+
         this.monitor = new Monitor();
-        this.addChild( this.monitor ,1 );
+        this.addChild( this.monitor , 1 );
 
         this.updateScreen = new Screen();
         this.addChild( this.updateScreen ,2 );
+
+        
 
     },
     createStatIcon: function(){      
@@ -142,6 +147,10 @@ var GameLayer = cc.LayerColor.extend({
 
         this.moneyNum = this.createLabel( money+' ฿', 'Stencil', 60 , true ,315, 585 , 'white');
         this.addChild( this.moneyNum );
+
+        this.messageLabel = this.createLabel( 'Nothing Happened ' , 'Tahoma', 25 , false ,680, 380 );
+        this.addChild( this.messageLabel , 1 );
+
     },
     createLabel: function( str, font, size, show, posx , posy , c){
 
@@ -162,6 +171,8 @@ var GameLayer = cc.LayerColor.extend({
         }
     },
     update: function() {
+        console.log('should decrease');
+        console.log('code: '+code[0]);
         this.createParameter();
         this.dayNum.setString( day );
         if( health > 0 ) {
@@ -258,37 +269,41 @@ var GameLayer = cc.LayerColor.extend({
             if( money >= 100 ) {
                 this.TV.handleClick( pos );
             }
-            this.endButton.handleClick( pos );
+            if( this.endButton.handleClick( pos ) ){
+                this.message.show();
+                this.messageLabel.setVisible( true );
+                this.messageLabel.setString( this.message.randomEvent() );
+            }
             if( day > 20 ) this.changeScene();       
          }
     },
     resetLayer: function(){
-            day = 1;
-            health = 100;
-            money = 500;
-            code = [0,5,500];
-            art = [0,5,500];
-            sound = [0,5,500];
-            writing = [0,5,500];
+         day = 1;
+        health = 100;
+        money = 500;
+        code = [0,5,500];
+        art = [0,5,500];
+        sound = [0,5,500];
+        writing = [0,5,500];
     },
     changeScene: function(){
-            var scene = GameOver.scene();
-            var gameTransition = cc.TransitionFade.create(3, scene);
-            cc.Director.getInstance().replaceScene(gameTransition);
+        var scene = GameOver.scene();
+        var gameTransition = cc.TransitionFade.create(3, scene);
+        cc.Director.getInstance().replaceScene(gameTransition);
     },
     updateGuro: function(){
-            this.dialog.setString( this.guro.chatting() );
-            this.chat.show();
-            this.dialog.setVisible( true );       
+        this.dialog.setString( this.guro.chatting() );
+        this.chat.show();
+        this.dialog.setVisible( true );       
     },
-    updateChat: function(){
+    hideChat: function(){
+        console.log('should hide');
         this.dialog.setVisible( false );
         this.chat.hide();
         isComplain = false; 
     },
-    chatting: function(){
-               
-        if( talk == true ) {
+    chatting: function(){              
+        if( talk == true && isComplain == false) {
             this.dialog.setString( 'Say  Ahhhhhh!!' );
             this.chat.show();
             this.dialog.setVisible( true );
@@ -301,15 +316,21 @@ var GameLayer = cc.LayerColor.extend({
      onMouseDown:function ( e ){      
         var pos = e.getLocation();
         console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
-        this.checkMouseDown( pos );
+        if( !Message.isShow ) this.checkMouseDown( pos );
+        else {
+            this.message.handleClick( pos );
+            this.messageLabel.setVisible( false );
+        }
         this.update();
      },
     onMouseMoved:function( e ){
         var pos = e.getLocation();
         this.hideIcons();
-        this.guro.handleMouseMove( pos );
-        this.chatting();       
-        this.checkMouseMoved( pos );      
+        if( !Message.isShow ) {
+            this.guro.handleMouseMove( pos );
+            this.checkMouseMoved( pos );
+        }     
+        this.chatting();              
     }
 });
 

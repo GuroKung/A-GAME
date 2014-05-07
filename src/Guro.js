@@ -22,12 +22,33 @@ var Guro = cc.Sprite.extend( {
         }
     },
     chatting: function(){
-        var num = 1+Math.floor(Math.random() * 5);
-        if( num == 1 ) return " I'm so tried ";
-        else if ( num == 2 ) return ' Wanna sleep O<-< ';
-        else if ( num == 3) return ' Final exam is coming!! ';
-        else if ( num == 4 ) return ' Why I have to do this? ';
-        else return " Let's code ";
+        var num = 1+Math.floor(Math.random() * 8);
+        switch (num) {
+        case 1:
+            return " I'm so tired ";
+            break;
+        case 2:
+            return ' Wanna sleep O<-< ';
+            break;
+        case 3:
+            return ' Final exam is coming!! ';
+            break;
+        case 4:
+            return ' Why I have to do this? ';
+            break;
+        case 5:
+            return " Let's code ";
+            break;
+        case 6:
+            return ' DAMN U PROJECT!! ';
+            break;
+        case 7:
+            return ' Please give me A ';
+            break;
+        case 8:
+            return ' BUG BUG BUG BUG BUG';
+            break;
+        }
     },
     complain: function(){
         var animation = new cc.Animation.create();

@@ -11,7 +11,10 @@ var EndButton = cc.Sprite.extend( {
     	if( cc.rectContainsPoint( boxEnd, touchLocation ) ){
         	day++;
             health = 100;
+            
+            return true;
         }
+        return false;
     },
     handleMouseMove: function( touchLocation ){
         var boxEnd = this.getBoundingBox();  
