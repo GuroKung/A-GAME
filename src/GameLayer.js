@@ -28,7 +28,7 @@ var GameLayer = cc.LayerColor.extend({
 
         this.setMouseEnabled(true); // use mouse
         this.updateMoney();
-        //cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
+        cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
         this.schedule ( this.updateGuro , 10, cc.RepeatForever, 0);
         this.schedule ( this.hideChat , 12, cc.RepeatForever, 0);
 
@@ -171,8 +171,6 @@ var GameLayer = cc.LayerColor.extend({
         }
     },
     update: function() {
-        console.log('should decrease');
-        console.log('code: '+code[0]);
         this.createParameter();
         this.dayNum.setString( day );
         if( health > 0 ) {

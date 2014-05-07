@@ -11,17 +11,17 @@ var Message = cc.Sprite.extend( {
     },
     randomEvent: function(){
         var num = 1+Math.floor(Math.random() * 100);
-        if ( num >= 1 && num <= 3 ){
+        if ( num >= 1 && num <= 3 ){ // 3%
             money += 1500;
             return "You just win the lottery \n  You've got 1,500 ฿";
         } 
-        else if ( num >= 10 && num <= 20 ){
+        else if ( num >= 10 && num <= 20 ){ // 10%
             money += 300
             return "Mommy give you money \n   You've got 300 ฿";
         }
-        else if ( num >= 21 && num >= 30 && code[0] >= 10 ) {
-            code[0] -= 10 ;
-            return "Your RAM is broken \n     Code 10 --";
+        else if ( num >= 21 && num <= 25  ) { // 5%
+            code[0] += 10 ;
+            return "Manatsawin Bless you \n     Code 10 ++";
         }
         else return 'Nothing Happened';
     },
