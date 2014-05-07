@@ -44,20 +44,24 @@ var Message = cc.Sprite.extend( {
             return "You've paid for SKE \n  You've lost 400 ฿";
         }
         else if ( num >= 51 && num <= 55  ) { // 5%
-            code[0] -= 10 ;
+            if( code[0] <= 10 ) code[0] = 0;
+            else code[0] -= 10 ;
             return "Your RAM is broken \n     Code 10 --";
         }
         else if ( num >= 56 && num <= 60 ){ // 5%
-            art[0] -= 10 ;
-            return "You've got new Pen Mouse \n           Art 10 --";
+            if( art[0] <= 10 ) art[0] = 0;
+            else art[0] -= 10 ;
+            return "Your Pen Mouse is broken \n           Art 10 --";
         }
         else if ( num >= 61 && num <= 65 ){ // 5%
-            sound[0] -= 10 ;
-            return "You just wake up and feel like Freddie Mercury \n                         Sound 10 --";
+            if( sound[0] <= 10 ) sound[0] = 0;  
+            else sound[0] -= 10 ; 
+            return "Event Sound \n                         Sound 10 --";
         }
         else if ( num >= 66 && num <= 70){ // 5%
-            writing[0] -= 10 ;
-            return "You've got an idea by reading Pantip \n           Writing 10 --";
+            if( writing[0] <= 10 ) writing[0] = 0 ;
+            else writing[0] -= 10 ;
+            return "Event Writing \n        Writing 10 --";
         }
         else return 'Nothing Happened';
     },

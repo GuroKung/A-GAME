@@ -14,6 +14,9 @@ var GameLayer = cc.LayerColor.extend({
         this.room = new Background();
         this.addChild( this.room );//background
 
+        this.drawParameter = cc.DrawNode.create();
+        this.addChild( this.drawParameter , 1 ); 
+
         this.createObjects(); // add objects
         this.createStatLabel(); //add status label
         this.createParameter();//add parameter
@@ -120,14 +123,12 @@ var GameLayer = cc.LayerColor.extend({
         this.price4.setVisible(false);
         this.price5.setVisible(false);
     },
-    createParameter: function(){
-        var draw = cc.DrawNode.create();
-        this.addChild(draw);        
-        draw.clear();
-        draw.drawSegment( new cc.Point(1000,657), new cc.Point(1003+(3*code[0]),657),10, new cc.Color4F(0.133,0.69,0.298,1)); // code
-        draw.drawSegment( new cc.Point(1000,621), new cc.Point(1003+(3*art[0]),621),10, new cc.Color4F(0.894,0.035,0.314,1)); // art
-        draw.drawSegment( new cc.Point(1000,584), new cc.Point(1003+(3*sound[0]),584),10, new cc.Color4F(0,0.635,0.909,1)); // sound 
-        draw.drawSegment( new cc.Point(1000,545), new cc.Point(1003+(3*writing[0]),545),10, new cc.Color4F(0.423,0.184,0.517,1)); // writing
+    createParameter: function(){ 
+        this.drawParameter.clear();      
+        this.drawParameter.drawSegment( new cc.Point(1000,657), new cc.Point(1003+(3*code[0]),657),10, new cc.Color4F(0.133,0.69,0.298,1)); // code
+        this.drawParameter.drawSegment( new cc.Point(1000,621), new cc.Point(1003+(3*art[0]),621),10, new cc.Color4F(0.894,0.035,0.314,1)); // art
+        this.drawParameter.drawSegment( new cc.Point(1000,584), new cc.Point(1003+(3*sound[0]),584),10, new cc.Color4F(0,0.635,0.909,1)); // sound 
+        this.drawParameter.drawSegment( new cc.Point(1000,545), new cc.Point(1003+(3*writing[0]),545),10, new cc.Color4F(0.423,0.184,0.517,1)); // writing    
     },
     createStatLabel: function(){
         this.dayLabel = this.createLabel( 'DAY: ', 'Stencil', 60 , true ,118, 715 , 'white');
