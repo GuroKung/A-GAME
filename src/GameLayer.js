@@ -29,8 +29,7 @@ var GameLayer = cc.LayerColor.extend({
         this.setMouseEnabled(true); // use mouse
         this.updateMoney();
         cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
-        this.schedule ( this.updateGuro , 10, cc.RepeatForever, 0);
-        this.schedule ( this.hideChat , 12, cc.RepeatForever, 0);
+        this.schedule ( this.updateChat , 10, cc.RepeatForever , 0);
 
         return true;
     },
@@ -124,6 +123,7 @@ var GameLayer = cc.LayerColor.extend({
     createParameter: function(){
         var draw = cc.DrawNode.create();
         this.addChild(draw);        
+        draw.clear();
         draw.drawSegment( new cc.Point(1000,657), new cc.Point(1003+(3*code[0]),657),10, new cc.Color4F(0.133,0.69,0.298,1)); // code
         draw.drawSegment( new cc.Point(1000,621), new cc.Point(1003+(3*art[0]),621),10, new cc.Color4F(0.894,0.035,0.314,1)); // art
         draw.drawSegment( new cc.Point(1000,584), new cc.Point(1003+(3*sound[0]),584),10, new cc.Color4F(0,0.635,0.909,1)); // sound 
@@ -201,6 +201,7 @@ var GameLayer = cc.LayerColor.extend({
         this.price3.setString( 'Upgrade Writing : '+writing[2]+' ฿ ' );
         this.price4.setString( 'Upgrade Code : '+code[2]+' ฿ ' );
     },
+
     checkMouseMoved: function( pos ){
         if(isShow){
             if( showScreen ){
@@ -289,7 +290,7 @@ var GameLayer = cc.LayerColor.extend({
         var gameTransition = cc.TransitionFade.create(3, scene);
         cc.Director.getInstance().replaceScene(gameTransition);
     },
-    updateGuro: function(){
+    openChat: function(){
         this.dialog.setString( this.guro.chatting() );
         this.chat.show();
         this.dialog.setVisible( true );       
@@ -299,6 +300,10 @@ var GameLayer = cc.LayerColor.extend({
         this.dialog.setVisible( false );
         this.chat.hide();
         isComplain = false; 
+    },
+    updateChat: function(){
+        this.schedule ( this.openChat , 0, 1, 0);
+        this.schedule ( this.hideChat , 2.25 , 1, 0);
     },
     chatting: function(){              
         if( talk == true && isComplain == false) {
