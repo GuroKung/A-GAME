@@ -65,8 +65,6 @@ var GameLayer = cc.LayerColor.extend({
         this.updateScreen = new Screen();
         this.addChild( this.updateScreen ,2 );
 
-        
-
     },
     createStatIcon: function(){      
         this.StatIcon1 = this.createLabel( 'Art: '+art[1] +'++  Health: 40--', 'Viner Hand ITC', 25 , false ,895, 618 );
@@ -234,49 +232,55 @@ var GameLayer = cc.LayerColor.extend({
             this.audio.handleMouseMove( pos );
         } 
     },
+    clickMoniterisShow: function( pos ){
+        this.icon1.show();
+        this.icon2.show();
+        this.icon3.show();
+        this.icon4.show();
+        this.fox.show();           
+       if( showScreen ){
+             this.updateScreen.handleClick( pos );
+        }
+        if( !showScreen ){
+            if ( this.fox.handleClick( pos ) ){
+                this.updateScreen.show();
+             }
+            if( health >= 40 ){  
+                this.icon1.handleClick( pos );
+                this.icon2.handleClick( pos );
+                this.icon3.handleClick( pos );
+                this.icon4.handleClick( pos );
+            } 
+                
+        }
+        this.monitor.handleClick( pos );
+    },
+    clickMoniterisHide: function( pos ){
+        this.icon1.hide();
+        this.icon2.hide();
+        this.icon3.hide();
+        this.icon4.hide();
+        this.fox.hide(); 
+        this.audio.handleClick( pos ); 
+        if( money >= 100 ) {
+           this.TV.handleClick( pos );
+        }
+        if( this.endButton.handleClick( pos ) && day <= 20 ){
+            this.message.show();
+            this.messageLabel.setVisible( true );
+            this.messageLabel.setString( this.message.randomEvent() );
+        }
+        if( day > 20 ) this.changeScene();   
+    },
     checkMouseDown: function( pos ){
         if( this.PC.handleClick( pos ) ){
             this.monitor.show();           
         }
         if ( isShow ) {
-            this.icon1.show();
-            this.icon2.show();
-            this.icon3.show();
-            this.icon4.show();
-            this.fox.show();           
-            if( showScreen ){
-                this.updateScreen.handleClick( pos );
-            }
-            if( !showScreen ){
-                if ( this.fox.handleClick( pos ) ){
-                    this.updateScreen.show();
-                 }
-                if( health >= 40 ){  
-                    this.icon1.handleClick( pos );
-                    this.icon2.handleClick( pos );
-                    this.icon3.handleClick( pos );
-                    this.icon4.handleClick( pos );
-                } 
-                
-            }
-            this.monitor.handleClick( pos );
+            this.clickMoniterisShow( pos );
         }                   
         if( !isShow ){
-            this.icon1.hide();
-            this.icon2.hide();
-            this.icon3.hide();
-            this.icon4.hide();
-            this.fox.hide(); 
-            this.audio.handleClick( pos ); 
-            if( money >= 100 ) {
-                this.TV.handleClick( pos );
-            }
-            if( this.endButton.handleClick( pos ) && day <= 20 ){
-                this.message.show();
-                this.messageLabel.setVisible( true );
-                this.messageLabel.setString( this.message.randomEvent() );
-            }
-            if( day > 20 ) this.changeScene();       
+            this.clickMoniterisHide( pos );
          }
     },
     resetLayer: function(){
@@ -320,7 +324,7 @@ var GameLayer = cc.LayerColor.extend({
     },
      onMouseDown:function ( e ){      
         var pos = e.getLocation();
-        console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
+        //console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
         if( !Message.isShow ) this.checkMouseDown( pos );
         else {
             this.message.handleClick( pos );

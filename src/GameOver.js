@@ -89,8 +89,7 @@ var GameOver = cc.LayerColor.extend({
     },
      onMouseDown:function ( e ){      
         var pos = e.getLocation();
-        console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
-
+        //console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
         if( ( pos.x>780.5 && pos.x<982.5 )&&
             ( pos.y>195 && pos.y<252.5 ) ){
             this.changeToGameScene();

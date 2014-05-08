@@ -60,7 +60,7 @@ var GameMenu = cc.LayerColor.extend({
     },
      onMouseDown:function ( e ){      
         var pos = e.getLocation();
-        console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
+        //console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
         if( !this.note.isVisible() ) {
             if ( this.Mbutton1.handleClick( pos )) {
                 cc.AudioEngine.end();

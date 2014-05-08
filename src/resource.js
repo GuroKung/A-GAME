@@ -39,5 +39,6 @@ var g_resources = [
  //effect
     {src: 'sound/theme.mp3'},
     {src: 'sound/menu.mp3'},
-    {src: 'sound/gameOver.mp3'}
+    {src: 'sound/gameOver.mp3'},
+    {src: 'sound/cash.mp3'},
 ];

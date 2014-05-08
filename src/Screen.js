@@ -39,6 +39,7 @@ var Screen = cc.Sprite.extend( {
         }
         if( (touchLocation.x>821&&touchLocation.x<971)&&
             (touchLocation.y>293&&touchLocation.y<437) && health >= 30){
+            cc.AudioEngine.getInstance().playEffect( 'sound/cash.mp3' );
             money += 250;
             health -= 30; 
         }
