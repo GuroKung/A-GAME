@@ -10,6 +10,7 @@ var Icon4 = cc.Sprite.extend( {
         if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&
             touchLocation.y>266&&touchLocation.y<348){
             if( code[0]+code[1] >= 100 ){
+                if( code[0]!=100 ) health -= 40;
                 code[0] = 100;
             }
             else {

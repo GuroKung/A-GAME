@@ -10,6 +10,7 @@ var Icon2 = cc.Sprite.extend( {
         if((touchLocation.x>1145.5&&touchLocation.x<1235.5)&&
             touchLocation.y>476&&touchLocation.y<567){
             if( sound[0]+sound[1] >= 100 ){
+                if( sound[0]!=100 ) health -= 40;
                 sound[0] = 100;
             }
             else {

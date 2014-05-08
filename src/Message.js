@@ -24,19 +24,23 @@ var Message = cc.Sprite.extend( {
             return "Mommy give you money \n    You've got 300 ฿";
         }
         else if ( num >= 21 && num <= 25  ) { // 5%
-            code[0] += 10 ;
+            if( code[0] >= 90 ) code[0] = 100;
+            else  code[0] += 10 ;
             return "Manatsawin Bless you \n     Code 10 ++";
         }
         else if ( num >= 26 && num <= 30 ){ // 5%
-            art[0] += 10 ;
+            if( art[0] >= 90 ) art[0] = 100;
+            else art[0] += 10 ;
             return "You've got new Pen Mouse \n           Art 10 ++";
         }
         else if ( num >= 31 && num <= 35 ){ // 5%
-            sound[0] += 10 ;
+            if( sound[0] >= 90 ) sound[0] = 100; 
+            else sound[0] += 10 ;
             return "You just wake up and feel like Freddie Mercury \n                        Sound 10 ++";
         }
         else if ( num >= 36 && num <= 40){ // 5%
-            writing[0] += 10 ;
+            if( writing[0] >= 90 ) writing = 100; 
+            else writing[0] += 10 ;
             return "You've got an idea by reading Pantip \n             Writing 10 ++";
         }
         else if ( num >= 41 && num <= 50 ){ // 10 %
@@ -65,10 +69,11 @@ var Message = cc.Sprite.extend( {
         }
         else if ( num >= 71 && num <= 73 ){ // 3%
             var num = 1+Math.floor(Math.random() * 4);
-            if( num == 1 ) code[0] -= 25 ;
-            else if ( num == 2) art[0] -= 25 ;
-            else if ( num == 3) sound[0] -= 25;
-            else if ( num == 4 ) writing[0] -= 25;
+            var dec = 5*( 1+Math.floor( Math.random() * 5 ) );
+            if( num == 1 ) code[0] -= dec ;
+            else if ( num == 2) art[0] -= dec ;
+            else if ( num == 3) sound[0] -= dec ;
+            else if ( num == 4 ) writing[0] -= dec ;
             return " JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL \n            Your progress is randomly decreased \n Warning: Progress can be negative only by this event";
         }
         else return 'Nothing Happened';

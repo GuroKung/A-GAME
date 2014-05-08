@@ -46,7 +46,7 @@ var Guro = cc.Sprite.extend( {
             return ' Please give me A ';
             break;
         case 8:
-            return ' BUG BUG BUG BUG BUG ';
+            return ' BUG BUG BUG BUG BUG';
             break;
         }
     },

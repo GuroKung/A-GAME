@@ -297,7 +297,6 @@ var GameLayer = cc.LayerColor.extend({
         this.dialog.setVisible( true );       
     },
     hideChat: function(){
-        console.log('should hide');
         this.dialog.setVisible( false );
         this.chat.hide();
         isComplain = false; 
