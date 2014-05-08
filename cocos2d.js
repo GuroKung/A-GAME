@@ -30,7 +30,8 @@
             'src/Chat.js',
             'src/GameOver.js',
             'src/Certificate.js',
-            'src/Message.js'     //add your own files in order here
+            'src/Message.js',
+            'src/GameMenu.js'     //add your own files in order here
         ]
     };
 
