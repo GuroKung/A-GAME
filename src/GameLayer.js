@@ -256,8 +256,9 @@ var GameLayer = cc.LayerColor.extend({
                     this.icon3.handleClick( pos );
                     this.icon4.handleClick( pos );
                 } 
-                this.monitor.handleClick( pos );
+                
             }
+            this.monitor.handleClick( pos );
         }                   
         if( !isShow ){
             this.icon1.hide();
@@ -269,7 +270,7 @@ var GameLayer = cc.LayerColor.extend({
             if( money >= 100 ) {
                 this.TV.handleClick( pos );
             }
-            if( this.endButton.handleClick( pos ) ){
+            if( this.endButton.handleClick( pos ) && day <= 20 ){
                 this.message.show();
                 this.messageLabel.setVisible( true );
                 this.messageLabel.setString( this.message.randomEvent() );

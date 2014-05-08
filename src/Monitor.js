@@ -4,6 +4,7 @@ var Monitor = cc.Sprite.extend( {
         this._super();
         this.initWithFile( 'images/monitor.png' );
         this.setPosition( new cc.Point( (screenWidth/2)+220, (screenHeight/2)+20 ) );
+        thisIsMoniter = this ;
         this.setVisible(false); //hide it when first create
     },
     handleClick: function( touchLocation ){
@@ -18,3 +19,4 @@ var Monitor = cc.Sprite.extend( {
     	this.setVisible(true);
     }
 });
+thisIsMoniter = null ;

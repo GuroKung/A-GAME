@@ -9,7 +9,7 @@ var Screen = cc.Sprite.extend( {
     },
     handleClick: function( touchLocation ){
     	if( (touchLocation.x>1238.5&&touchLocation.x<1284.5)&&
-            (touchLocation.y>685&&touchLocation.y<697) ){
+            (touchLocation.y>685&&touchLocation.y<697) || !cc.rectContainsPoint( thisIsMoniter.getBoundingBox() , touchLocation ) ){
             this.setVisible(false);
             showScreen = false;
         }

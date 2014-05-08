@@ -39,7 +39,7 @@ var Message = cc.Sprite.extend( {
             return "You just wake up and feel like Freddie Mercury \n                        Sound 10 ++";
         }
         else if ( num >= 36 && num <= 40){ // 5%
-            if( writing[0] >= 90 ) writing = 100; 
+            if( writing[0] >= 90 ) writing[0] = 100; 
             else writing[0] += 10 ;
             return "You've got an idea by reading Pantip \n             Writing 10 ++";
         }
