@@ -31,6 +31,16 @@ var GameOver = cc.LayerColor.extend({
         var fadeIn = cc.FadeIn.create(9);
         this.score.runAction(fadeIn);
     },
+    changeToGameScene: function () {
+        var scene = GameLayer.scene();
+        var gameTransition = cc.TransitionFade.create( 1.75 , scene );
+        cc.Director.getInstance().replaceScene( gameTransition );
+    },
+    changeToMenuScene: function () {
+        var scene = GameMenu.scene();
+        var gameTransition = cc.TransitionFade.create( 1.75 , scene );
+        cc.Director.getInstance().replaceScene( gameTransition );
+    },
     createLabel: function(){
 
         this.mainMenu = cc.LabelTTF.create( 'Main Menu', 'Vladimir Script', 54 );
@@ -83,9 +93,11 @@ var GameOver = cc.LayerColor.extend({
 
         if( ( pos.x>780.5 && pos.x<982.5 )&&
             ( pos.y>195 && pos.y<252.5 ) ){
-            var scene = GameLayer.scene();
-            var gameTransition = cc.TransitionFade.create( 1.75, scene );
-            cc.Director.getInstance().replaceScene(gameTransition);
+            this.changeToGameScene();
+        }
+        else if ( ( pos.x>373 && pos.x<602 )&&
+            ( pos.y>211 && pos.y<252 ) ){
+            this.changeToMenuScene();
         }
 
      },

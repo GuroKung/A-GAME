@@ -7,7 +7,8 @@ var Guro = cc.Sprite.extend( {
         this.schedule ( this.complain , 10, cc.RepeatForever,0);
 
     },
-    handleClick:function( touchLocation ){
+    isMenuScene:function(){
+        this.unscheduleAllCallbacks();
 
     },
     handleMouseMove: function( touchLocation ){
@@ -22,7 +23,7 @@ var Guro = cc.Sprite.extend( {
         }
     },
     chatting: function(){
-        var num = 1+Math.floor(Math.random() * 8);
+        var num = 1+Math.floor(Math.random() * 9);
         switch (num) {
         case 1:
             return " I'm so tired ";
@@ -47,6 +48,9 @@ var Guro = cc.Sprite.extend( {
             break;
         case 8:
             return ' BUG BUG BUG BUG BUG';
+            break;
+        case 9:
+            return ' FUCKKK !! ';
             break;
         }
     },

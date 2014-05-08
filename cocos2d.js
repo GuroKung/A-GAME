@@ -12,6 +12,7 @@
         engineDir: '../../cocos2d/',
         //SingleEngineFile:'',
         appFiles:[
+            'src/resource.js',
             'src/GameLayer.js',
             'src/Background.js',
             'src/ProFrame.js',
@@ -31,7 +32,11 @@
             'src/GameOver.js',
             'src/Certificate.js',
             'src/Message.js',
-            'src/GameMenu.js'     //add your own files in order here
+            'src/GameMenu.js',
+            'src/Mbutton1.js',
+            'src/Mbutton2.js',
+            'src/Logo.js',
+            'src/Note.js'     //add your own files in order here
         ]
     };
 

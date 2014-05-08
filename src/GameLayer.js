@@ -31,6 +31,7 @@ var GameLayer = cc.LayerColor.extend({
 
         this.setMouseEnabled(true); // use mouse
         this.updateMoney();
+        
         cc.AudioEngine.getInstance().playMusic( 'sound/theme.mp3', true );
         this.schedule ( this.updateChat , 10, cc.RepeatForever , 0);
 
@@ -338,7 +339,7 @@ var GameLayer = cc.LayerColor.extend({
     }
 });
 
-var StartScene = cc.Scene.extend({
+var GameLayerScene = cc.Scene.extend({
     onEnter: function() {
         this._super();
         var layer = new GameLayer();
