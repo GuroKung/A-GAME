@@ -20,16 +20,16 @@ var GameOver = cc.LayerColor.extend({
     },
     fadeIn: function(){
         this.mainMenu.setOpacity(0);
-        var fadeIn = cc.FadeIn.create(7);
-        this.mainMenu.runAction(fadeIn);
+        this.fadeIn1 = cc.FadeIn.create(7);
+        this.mainMenu.runAction( this.fadeIn1 );
 
         this.tryAgian.setOpacity(0);
-        var fadeIn = cc.FadeIn.create(7);
-        this.tryAgian.runAction(fadeIn);
+        this.fadeIn2 = cc.FadeIn.create(7);
+        this.tryAgian.runAction( this.fadeIn2 );
 
         this.score.setOpacity(0);
-        var fadeIn = cc.FadeIn.create(9);
-        this.score.runAction(fadeIn);
+        this.fadeIn3 = cc.FadeIn.create(9);
+        this.score.runAction( this.fadeIn3 );
     },
     changeToGameScene: function () {
         var scene = GameLayer.scene();
@@ -91,11 +91,11 @@ var GameOver = cc.LayerColor.extend({
         var pos = e.getLocation();
         //console.log( 'x: '+ pos.x + ' y: ' + pos.y ); 
         if( ( pos.x>780.5 && pos.x<982.5 )&&
-            ( pos.y>195 && pos.y<252.5 ) ){
+            ( pos.y>195 && pos.y<252.5 ) && this.fadeIn1.isDone() && this.fadeIn2.isDone() ){
             this.changeToGameScene();
         }
         else if ( ( pos.x>373 && pos.x<602 )&&
-            ( pos.y>211 && pos.y<252 ) ){
+            ( pos.y>211 && pos.y<252 ) && this.fadeIn1.isDone() && this.fadeIn2.isDone() ){
             this.changeToMenuScene();
         }
 

@@ -21,12 +21,12 @@ var Message = cc.Sprite.extend( {
         }
         else if ( num >= 11 && num <= 20 ){ // 10%
             money += 300 ;
-            return "Mommy give you money \n    You've got 300 ฿";
+            return "Mommy give you money \n     You've got 300 ฿";
         }
         else if ( num >= 21 && num <= 25  ) { // 5%
             if( code[0] >= 90 ) code[0] = 100;
             else  code[0] += 10 ;
-            return "Manatsawin Bless you \n     Code 10 ++";
+            return "Manatsawin Bless you \n      Code 10 ++";
         }
         else if ( num >= 26 && num <= 30 ){ // 5%
             if( art[0] >= 90 ) art[0] = 100;
@@ -41,11 +41,12 @@ var Message = cc.Sprite.extend( {
         else if ( num >= 36 && num <= 40){ // 5%
             if( writing[0] >= 90 ) writing[0] = 100; 
             else writing[0] += 10 ;
-            return "You've got an idea by reading Pantip \n             Writing 10 ++";
+            return "You've got an idea by reading Pantip \n              Writing 10 ++";
         }
         else if ( num >= 41 && num <= 50 ){ // 10 %
             money -= 400 ;
-            return "You've paid for SKE \n  You've lost 400 ฿";
+            return "                       You've paid for SKE \n                         You've lost 400 ฿ \n"
+            +" Warning: Money can be negative only by this event";
         }
         else if ( num >= 51 && num <= 55  ) { // 5%
             if( code[0] <= 10 ) code[0] = 0;
@@ -69,12 +70,13 @@ var Message = cc.Sprite.extend( {
         }
         else if ( num >= 71 && num <= 73 ){ // 3%
             var num = 1+Math.floor(Math.random() * 4);
-            var dec = 5*( 1+Math.floor( Math.random() * 5 ) );
+            var dec = 5*( 1+Math.floor( Math.random() * 10 ) );
             if( num == 1 ) code[0] -= dec ;
             else if ( num == 2) art[0] -= dec ;
             else if ( num == 3) sound[0] -= dec ;
             else if ( num == 4 ) writing[0] -= dec ;
-            return " JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL \n            Your progress is randomly decreased \n Warning: Progress can be negative only by this event";
+            return " JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL JL \n  Your progress is randomly decreased between 5-50 \n"
+            +" Warning: Progress can be negative only by this event";
         }
         else return 'Nothing Happened';
     },
